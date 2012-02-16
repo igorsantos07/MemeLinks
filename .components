@@ -1,0 +1,7 @@
+--- 
+:stylesheet: sass
+:script: jquery
+:renderer: haml
+:orm: none
+:mock: none
+:test: none
