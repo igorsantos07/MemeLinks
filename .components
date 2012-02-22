@@ -2,6 +2,6 @@
 :stylesheet: sass
 :script: jquery
 :renderer: haml
-:orm: none
+:orm: mongoid
 :mock: none
 :test: none

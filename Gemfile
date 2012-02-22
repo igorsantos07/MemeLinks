@@ -10,9 +10,9 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 # Component requirements
 gem 'sass'
 gem 'haml'
-gem 'redis'
-#commented out because Heroku complained about this gem
-#gem 'system_timer' #optionally required by redis
+#gem 'SystemTimer', :require => "system_timer"
+gem 'mongoid'
+gem 'bson_ext', :require => "mongo"
 
 # Test requirements
 
