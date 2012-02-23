@@ -1,7 +1,8 @@
---- 
+---
 :stylesheet: sass
 :script: jquery
 :renderer: haml
 :orm: mongoid
 :mock: none
 :test: none
+:admin_renderer: haml
