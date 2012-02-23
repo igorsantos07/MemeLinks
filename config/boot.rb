@@ -24,6 +24,7 @@ end
 # Add your after load hooks here
 #
 Padrino.after_load do
+  Padrino::Logger::Config[:production][:stream] = :stdout
 end
 
 Padrino.load!
