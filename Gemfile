@@ -14,6 +14,7 @@ gem 'haml'
 #gem 'SystemTimer', :require => "system_timer"
 gem 'mongoid'
 gem 'bson_ext', :require => "mongo"
+gem 'mongoid_slug'
 
 # Test requirements
 

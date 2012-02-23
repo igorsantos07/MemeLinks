@@ -10,23 +10,25 @@
     .inner
       %table.table
         %tr
-          %th.first=mat(:meme, :_type)
-          %th=mat(:meme, :_id)
+          %th.first=mat(:meme, :slug)
+          %th=mat(:meme, :name)
           %th=mat(:meme, :created_at)
           %th=mat(:meme, :updated_at)
-          %th=mat(:meme, :slug)
-          %th=mat(:meme, :name)
-          %th=mat(:meme, :image)
+          %th=mat(:meme, :_id)
+          %th=mat(:meme, :creator_id)
+          %th=mat(:meme, :_type)
+          %th=mat(:meme, :updater_id)
           %th.last="&nbsp;"
         -@memes.each do |meme|
           %tr
-            %td.first=meme._type
-            %td=meme._id
+            %td.first=meme.slug
+            %td=meme.name
             %td=meme.created_at
             %td=meme.updated_at
-            %td=meme.slug
-            %td=meme.name
-            %td=meme.image
+            %td=meme._id
+            %td=meme.creator_id
+            %td=meme._type
+            %td=meme.updater_id
             %td.last
               =button_to pat(:edit), url(:memes, :edit, :id => meme.id), :method => :get, :class => :button_to
               ="|"

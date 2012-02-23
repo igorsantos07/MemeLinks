@@ -2,14 +2,14 @@ class Account
   include Mongoid::Document
   attr_accessor :password, :password_confirmation
 
-  # Fields
   field :name,             :type => String
   field :surname,          :type => String
   field :email,            :type => String
   field :crypted_password, :type => String
   field :role,             :type => String
+  has_many :created_memes, :class_name => 'Meme'
+  has_many :updated_memes, :class_name => 'Meme'
 
-  # Validations
   validates_presence_of     :email, :role
   validates_presence_of     :password,                   :if => :password_required
   validates_presence_of     :password_confirmation,      :if => :password_required
@@ -20,7 +20,6 @@ class Account
   validates_format_of       :email,    :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_format_of       :role,     :with => /[A-Za-z]/
 
-  # Callbacks
   before_save :encrypt_password, :if => :password_required
 
   ##
