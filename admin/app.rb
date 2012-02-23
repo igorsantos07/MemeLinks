@@ -17,7 +17,7 @@ class Admin < Padrino::Application
   # set :locale_path, "bar"        # Set path for I18n translations (default your_app/locales)
   # disable :sessions              # Disabled sessions by default (enable if needed)
   # disable :flash                 # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
-  # layout  :my_layout             # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
+  layout  :one_column             # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   #
 
   set :login_page, "/admin/sessions/new"

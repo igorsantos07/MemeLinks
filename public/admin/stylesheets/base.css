@@ -20,6 +20,7 @@ body{font-size:12px;font-family:sans-serif;}
 #header h1{margin:0;padding:10px 0;font-size:26px;}
 #header h1 a:link,#header h1 a:active,#header h1 a:hover,#header h1 a:visited{text-decoration:none;}
 #main{width:73%;float:left;}
+#main.no-sidebar{width:100%;float:left;}
 .actions-bar{padding:10px 1px;}
 .actions-bar .actions{float:left;}
 .actions-bar .pagination{float:right;padding:1px 0;}
