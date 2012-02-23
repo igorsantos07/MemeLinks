@@ -1,1 +1,1 @@
-web: bundle exec padrino s -p $PORT
+web: bundle exec padrino s -p 6363
