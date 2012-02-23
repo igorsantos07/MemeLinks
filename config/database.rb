@@ -1,15 +1,10 @@
-
-# Connection.new takes host, port
-host = 'localhost'
-port = Mongo::Connection::DEFAULT_PORT
-
-database_name = case Padrino.env
-  when :development then 'memelinks_development'
-  when :production  then 'memelinks_production'
-  when :test        then 'memelinks_test'
+case Padrino.env
+  when :development then db = {name: 'memelinks_development', host: 'localhost', port: Mongo::Connection::DEFAULT_PORT}
+  when :test        then db = {name: 'memelinks_test', host: 'localhost', port: Mongo::Connection::DEFAULT_PORT}
+  when :production  then db = {name: 'memelinks_production', host: 'ds031107.mongolab.com', port: 31107}
 end
 
-Mongoid.database = Mongo::Connection.new(host, port).db(database_name)
+Mongoid.database = Mongo::Connection.new(db['host'], db['port']).db(db['name'])
 
 # You can also configure Mongoid this way
 # Mongoid.configure do |config|
