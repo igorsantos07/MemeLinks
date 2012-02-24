@@ -11,6 +11,6 @@
     .inner
       -form_for :meme, url(:memes, :update, :id => @meme.id), :method => :put, :class => :form, :enctype => "multipart/form-data"  do |f|
         =partial "memes/form", :locals => { :f => f }
-      %img{:src => '/'+@meme.slug, :style => 'max-width: 100%'}
+      %img{:src => url(:meme, :image, :slug => @meme.slug), :style => 'max-width: 100%'}
 
 -content_for :sidebar, partial("base/sidebar")
