@@ -1,0 +1,9 @@
+-content_for :subtitle do 'Listagem de Memes' end
+
+%table#memes
+  -@memes.each do |meme|
+    %tr
+      %td
+        %h3=link_to meme.name, url(:meme, :show, :slug => meme.slug)
+        %a{ :href => url(:meme, :show, :slug => meme.slug) }=url(:meme, :image, :slug => meme.slug)
+        %a.meme{ :href => url(:meme, :show, :slug => meme.slug) }=image_tag url(:meme, :image, :slug => meme.slug)
