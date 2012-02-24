@@ -11,10 +11,12 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'sass'
 gem 'haml'
-#gem 'SystemTimer', :require => "system_timer"
 gem 'mongoid'
 gem 'bson_ext', :require => "mongo"
 gem 'mongoid_slug'
+
+# Ramdon requirements
+gem 'awesome_print'
 
 # Test requirements
 
