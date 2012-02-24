@@ -4,7 +4,8 @@ class Memelinks < Padrino::Application
   register Padrino::Mailer
   register Padrino::Helpers
 
-  enable :sessions
+  layout  :main                   # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
+  set :haml, :format => :html5
 
   ##
   # Caching support
@@ -34,7 +35,6 @@ class Memelinks < Padrino::Application
   # set :locale_path, "bar"       # Set path for I18n translations (default your_app/locales)
   # disable :sessions             # Disabled sessions by default (enable if needed)
   # disable :flash                # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
-  # layout  :my_layout            # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   #
 
   ##
