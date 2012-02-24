@@ -13,6 +13,7 @@ Bundler.require(:default, PADRINO_ENV)
 # Padrino::Logger::Config[:development] = { :log_level => :devel, :stream => :stdout }
 # Padrino::Logger.log_static = true
 #
+Padrino::Logger::Config[:production][:stream] = :stdout
 
 ##
 # Add your before load hooks here
@@ -24,7 +25,6 @@ end
 # Add your after load hooks here
 #
 Padrino.after_load do
-  Padrino::Logger::Config[:production][:stream] = :stdout
 end
 
 Padrino.load!
