@@ -6,6 +6,7 @@ Memelinks.controllers :base do
       content_type meme.image_mime
       body meme.image
     else
+      logger.error params.inspect
       halt 404, 'Meme not found :('
     end
   end
