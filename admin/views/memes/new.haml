@@ -8,7 +8,7 @@
       =pat(:new)
       =mt(:meme)
     .inner
-      -form_for :meme, url(:memes, :create), :class => :form do |f|
+      -form_for :meme, url(:memes, :create), :class => :form, :enctype => "multipart/form-data" do |f|
         =partial "memes/form", :locals => { :f => f }
 
 -content_for :sidebar, partial("base/sidebar")

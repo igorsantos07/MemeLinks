@@ -11,7 +11,12 @@ Admin.controllers :memes do
   end
 
   post :create do
-    @meme = Meme.new(params[:meme])
+    @meme = Meme.new
+    @meme.name = params[:meme]['name']
+    @meme.image_mime = params[:meme]['image'][:head].match(/Content-Type: ([\w\/-_]*)/i)[1]
+    @meme.image = params[:meme]['image'][:tempfile].read
+    @meme.creator = current_account
+
     if @meme.save
       flash[:notice] = 'Meme was successfully created.'
       redirect url(:memes, :edit, :id => @meme.id)
