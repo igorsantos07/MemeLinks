@@ -15,4 +15,9 @@ Memelinks.controllers :base do
   get :index, :map => '/' do
     'Nothing to see here... Yet ;)'
   end
+
+  get :sass, :map => '/stylesheets/:file.css' do
+    content_type 'text/css', :charset => 'utf-8'
+    sass params[:file]
+  end
 end
