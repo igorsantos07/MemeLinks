@@ -4,7 +4,7 @@
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
     %title MemeLinks Admin
     =stylesheet_link_tag :base, 'themes/warehouse/style'
-    =javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs'
+    =yield_content :other_css
   %body
     #container
       #header
@@ -21,3 +21,6 @@
       #wrapper.wat-cf
         .flash=[:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join
         =yield_content :content
+
+    =javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs'
+    =yield_content :other_js
