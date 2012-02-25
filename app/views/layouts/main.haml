@@ -4,8 +4,11 @@
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
     %title MemeLinks - Encontre a imagem e o link do seu meme e use nas redes sociais
-    =stylesheet_link_tag :ie, :screen, :main
+    =stylesheet_link_tag :ie, :screen, :main, 'http://fonts.googleapis.com/css?family=Lilita+One'
     =stylesheet_link_tag :print, :media => :print
+    =yield_content :other_css
+    =javascript_include_tag '/javascripts/jquery'
+    =yield_content :important_js
 
   %body
     #header
@@ -15,4 +18,6 @@
     #content
       =yield
 
+    =javascript_include_tag '/javascripts/jquery-ujs'
+    =yield_content :other_js
     =render_partial 'base/getclicky'

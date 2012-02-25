@@ -1,18 +1,51 @@
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  text-decoration: none; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lilita One";
+  color: #3c7b79; }
+  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    text-decoration: none; }
+  h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    text-decoration: underline; }
 
-table#memes {
+a, a:hover {
+  color: #3c7b79; }
+
+body {
+  background-color: #e1f1f0; }
+
+#header {
+  padding-top: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+  background-image: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/949/949114.png?1278906486); }
+
+#memes div.meme {
+  background-color: white;
+  display: inline-block;
+  height: 400px;
   width: 400px;
-  margin: 0px auto;
-  border-collapse: collapse; }
-  table#memes td {
-    text-align: center;
-    border: 1px solid #cccccc; }
-    table#memes td h3 {
-      margin-bottom: 0px;
-      font-size: 2em; }
-    table#memes td img {
-      max-width: 95%;
-      max-height: 400px;
-      margin: 10px auto 5px auto;
-      display: block; }
+  text-align: center;
+  border: 1px solid #a0bcb9;
+  border-radius: 10px;
+  margin: 8px;
+  padding: 0px;
+  overflow: hidden; }
+  #memes div.meme .heading {
+    height: 50px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #e1f1f0;
+    padding-top: 10px; }
+  #memes div.meme h3 {
+    margin-bottom: 0px;
+    font-size: 2em; }
+  #memes div.meme img {
+    max-width: 95%;
+    max-height: 325px;
+    margin: 10px auto 5px auto;
+    display: block; }
+#memes div.meme:hover .heading {
+  background-color: #c2dbd9; }
+
+#fancybox-title h3 {
+  color: #444444;
+  font-size: 2.2em;
+  margin-bottom: 0px; }
