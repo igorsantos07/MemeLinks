@@ -48,7 +48,7 @@ class Meme
   end
 
   def self.find_by_filename filename
-    slug = filename[0...filename.index('.')]
+    slug = filename[0...filename.index('.')||filename.length]
     self.find_by_slug slug
   end
 end
