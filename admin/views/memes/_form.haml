@@ -4,18 +4,18 @@
   =f.text_field :name, :class => :text_field
 
 .group{:style => 'width: 45%; display: inline-block'}
-  =f.label :image_file
-  =f.error_message_on :image_file
-  =f.error_message_on :image_mime
-  =f.file_field :image_file, :class => :text_field
+  =f.label :image_url
+  =f.error_message_on :image_url
+  =f.text_field :image_url, :class => :text_field
 
 .group{:style => 'width: 9%; display: inline-block; text-align: center; font: bold 3em sans-serif'}
   OR
 
 .group{:style => 'width: 45%; display: inline-block'}
-  =f.label :image_url
-  =f.error_message_on :image_url
-  =f.text_field :image_url, :class => :text_field
+  =f.label :image_file
+  =f.error_message_on :image_file
+  =f.error_message_on :image_mime
+  =f.file_field :image_file, :class => :text_field
 
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button
