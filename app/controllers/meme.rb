@@ -1,8 +1,9 @@
 Memelinks.controllers :meme do
 
-  get :image, :map => '/:slug', :priority => :low do
-    slug = if params[:slug].is_a? Array then params[:slug][0] else params[:slug] end
-    meme = Meme.find_by_slug slug
+  get :image, :map => '/:filename', :priority => :low do
+    filename = if params[:filename].is_a? Array then params[:filename][0] else params[:filename] end
+    meme = Meme.find_by_filename filename
+    
     if meme
       content_type meme.image_mime
       body meme.image

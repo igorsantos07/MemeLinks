@@ -2,8 +2,9 @@
 
 %table#memes
   -@memes.each do |meme|
+    -img_url, show_url = url(:meme, :image, :filename => meme.filename), url(:meme, :show, :slug => meme.slug)
     %tr
       %td
-        %h3=link_to meme.name, url(:meme, :show, :slug => meme.slug)
-        %a{ :href => url(:meme, :show, :slug => meme.slug) }=url(:meme, :image, :slug => meme.slug)
-        %a.meme{ :href => url(:meme, :show, :slug => meme.slug) }=image_tag url(:meme, :image, :slug => meme.slug)
+        %h3=link_to meme.name, img_url
+        %a{ :href => show_url }='http://'+request.host+img_url
+        %a.meme{ :href => show_url }=image_tag img_url

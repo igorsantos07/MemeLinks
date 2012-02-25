@@ -1,3 +1,11 @@
+-content_for :other_js do
+  =javascript_include_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.pack.js'
+  :javascript
+    $(document).ready(function() { $('a#img').fancybox() })
+
+-content_for :other_css do
+  =stylesheet_link_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.css'
+
 .block
   .secondary-navigation
     %ul.wat-cf
@@ -11,6 +19,7 @@
     .inner
       -form_for :meme, url(:memes, :update, :id => @meme.id), :method => :put, :class => :form, :enctype => "multipart/form-data"  do |f|
         =partial "memes/form", :locals => { :f => f }
-      %img{:src => url(:meme, :image, :slug => @meme.slug), :style => 'max-width: 100%'}
+
+      %a#img{:href => '/'+@meme.filename}=image_tag '/'+@meme.filename
 
 -content_for :sidebar, partial("base/sidebar")
