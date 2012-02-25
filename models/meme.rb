@@ -31,4 +31,24 @@ class Meme
   validates_presence_of :image, :image_mime, :if => proc { |obj| obj.new_record? }
   validates_presence_of :updater, :if => proc { |obj| !obj.new_record? }
   validates_uniqueness_of :name, :slug
+
+  def filename
+    ext = case self.image_mime
+      when 'image/gif'      then '.gif'
+      when 'image/jpeg'     then '.jpg'
+      when 'image/jpg'      then '.jpg'
+      when 'image/png'      then '.png'
+      when 'image/svg+xml'  then '.svg'
+      when 'image/svg'      then '.svg'
+      when 'image/tiff'     then '.tiff'
+      else ''
+    end
+
+    self.slug + ext
+  end
+
+  def self.find_by_filename filename
+    slug = filename[0...filename.index('.')]
+    self.find_by_slug slug
+  end
 end
