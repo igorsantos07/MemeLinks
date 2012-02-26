@@ -21,7 +21,7 @@ class Meme
   slug :name, :history => true
   field :image, :type => Base64File
   field :image_mime
-  field :keywords
+  field :keywords,        :default => []
   field :external_count,  :default => 0
   field :all_views_count, :default => 0
   belongs_to :creator, :class_name => 'Account'
