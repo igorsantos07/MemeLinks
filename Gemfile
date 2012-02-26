@@ -17,6 +17,7 @@ gem 'mongoid_slug'
 
 # Ramdon requirements
 gem 'awesome_print'
+gem 'term-ansicolor'
 
 # Test requirements
 
