@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Lilita One";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Lilita One"), local("LilitaOne"), url("LilitaOne.woff") format("woff"); }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Lilita One";
   color: #3c7b79; }
@@ -16,7 +22,7 @@ body {
   padding-top: 10px;
   margin-bottom: 20px;
   border-bottom: 1px solid black;
-  background-image: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/949/949114.png?1278906486); }
+  background-image: url(/images/header-pattern.png); }
 
 #memes div.meme {
   background-color: white;
