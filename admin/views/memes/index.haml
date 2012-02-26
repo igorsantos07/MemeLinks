@@ -21,7 +21,7 @@
           %th.last="&nbsp;"
         -@memes.each do |meme|
           %tr
-            %td=meme.name
+            %td=link_to meme.name, '/'+meme.filename
             %td=meme.slug
             %td=meme.all_views_count.to_s+' / '+meme.external_count.to_s
             %td=meme.keywords_string
