@@ -5,10 +5,10 @@ Memelinks.controllers :meme do
     meme = Meme.find_by_filename filename
 
     if meme
-      log_common_request_data(:info) if meme.slug == 'orly-own'
+      log_common_request_data(:warn) if meme.slug == 'orly-own'
       if request.referer.nil? or !request.referrer.include? request.host+'/admin/'
         meme.inc(:all_views_count, 1)
-        meme.inc(:external_count, 1) unless request.referrer.include? request.host
+        meme.inc(:external_count, 1) if !request.referer.nil? and !request.referrer.include? request.host
       end
       content_type meme.image_mime
       body meme.image
