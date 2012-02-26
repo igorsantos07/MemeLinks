@@ -1,3 +1,12 @@
+body {
+  width: 100%;
+  *zoom: 1; }
+  body:before, body:after {
+    content: "";
+    display: table; }
+  body:after {
+    clear: both; }
+
 @font-face {
   font-family: "Lilita One";
   font-style: normal;
@@ -5,7 +14,7 @@
   src: local("Lilita One"), local("LilitaOne"), url("LilitaOne.woff") format("woff"); }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Lilita One";
+  font-family: "Lilita One", "Arial Black", "Arial", sans-serif;
   color: #3c7b79; }
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none; }
@@ -20,29 +29,28 @@ body {
 
 #header {
   padding-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-bottom: 1px solid black;
   background-image: url(/images/header-pattern.png); }
 
 #memes div.meme {
   background-color: white;
   display: inline-block;
-  height: 400px;
-  width: 400px;
   text-align: center;
   border: 1px solid #a0bcb9;
   border-radius: 10px;
-  margin: 8px;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
   padding: 0px;
   overflow: hidden; }
   #memes div.meme .heading {
-    height: 50px;
+    min-height: 50px;
     border-radius: 10px 10px 0px 0px;
     background-color: #e1f1f0;
-    padding-top: 10px; }
-  #memes div.meme h3 {
-    margin-bottom: 0px;
-    font-size: 2em; }
+    padding: 10px 0px 5px 0px; }
+    #memes div.meme .heading h3 {
+      margin-bottom: 0px;
+      font-size: 2em; }
   #memes div.meme img {
     max-width: 95%;
     max-height: 325px;
@@ -55,3 +63,83 @@ body {
   color: #444444;
   font-size: 2.2em;
   margin-bottom: 0px; }
+
+#content {
+  max-width: 1500px;
+  margin: 0px auto; }
+
+#memes div.meme {
+  display: inline;
+  float: left;
+  width: 18.571%;
+  margin: 0 0.714%;
+  height: 380px; }
+  #memes div.meme img {
+    max-height: 300px; }
+
+@media screen and (max-width: 1500px) {
+  #memes div.meme {
+    height: 300px; }
+    #memes div.meme .heading {
+      min-height: 40px; }
+      #memes div.meme .heading h3 {
+        font-size: 1.7em; }
+      #memes div.meme .heading a.link {
+        content: attr(data-short-href); }
+    #memes div.meme img {
+      max-height: 225px; } }
+@media screen and (max-width: 1200px) {
+  #memes div.meme {
+    display: inline;
+    float: left;
+    width: 23.214%;
+    margin: 0 0.893%;
+    height: 270px; }
+    #memes div.meme .heading {
+      min-height: 40px; }
+      #memes div.meme .heading h3 {
+        font-size: 1.5em; }
+    #memes div.meme img {
+      max-height: 195px; } }
+@media screen and (max-width: 1000px) {
+  #memes div.meme {
+    display: inline;
+    float: left;
+    width: 30.952%;
+    margin: 0 1.19%;
+    height: 250px; }
+    #memes div.meme .heading {
+      min-height: 35px; }
+      #memes div.meme .heading h3 {
+        font-size: 1.4em; }
+    #memes div.meme img {
+      max-height: 175px; } }
+@media screen and (max-width: 750px) {
+  #memes div.meme .heading a.link {
+    content: "link da imagem"; } }
+@media screen and (max-width: 600px) {
+  #memes div.meme {
+    display: inline;
+    float: left;
+    width: 46.429%;
+    margin: 0 1.786%;
+    height: 300px; }
+    #memes div.meme .heading {
+      min-height: 40px; }
+      #memes div.meme .heading h3 {
+        font-size: 1.5em; }
+    #memes div.meme img {
+      max-height: 210px; } }
+@media screen and (max-width: 480px) {
+  #memes div.meme {
+    display: inline;
+    float: left;
+    width: 92.857%;
+    margin: 0 3.571%;
+    height: 250px; }
+    #memes div.meme .heading {
+      min-height: 35px; }
+      #memes div.meme .heading h3 {
+        font-size: 1.7em; }
+    #memes div.meme img {
+      max-height: 180px; } }
