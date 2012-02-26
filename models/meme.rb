@@ -36,6 +36,8 @@ class Meme
   validates_presence_of :updater, :if => proc { |obj| !obj.new_record? }
   validates_uniqueness_of :name, :slug
 
+  scope :tops, desc(:all_views_count).asc(:name_lower)
+
   def filename
     ext = case self.image_mime
       when 'image/gif'      then '.gif'
