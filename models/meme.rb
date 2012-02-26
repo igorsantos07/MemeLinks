@@ -18,12 +18,14 @@ class Meme
   require 'base64'
 
   field :name
+  slug :name, :history => true
   field :image, :type => Base64File
   field :image_mime
   field :keywords
+  field :external_count,  :default => 0
+  field :all_views_count, :default => 0
   belongs_to :creator, :class_name => 'Account'
   belongs_to :updater, :class_name => 'Account'
-  slug :name, :history => true
 
   index :name, :unique => true
   index :slug, :unique => true
