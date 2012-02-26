@@ -18,6 +18,7 @@ class Meme
   require 'base64'
 
   field :name
+  field :name_lower
   slug :name, :history => true
   field :image, :type => Base64File
   field :image_mime
@@ -50,9 +51,14 @@ class Meme
     self.slug + ext
   end
 
+  def name= name=''
+    self[:name] = name
+    self[:name_lower] = name.downcase
+  end
+
   def keywords_string= keywords
     list = keywords.split ','
-    self.keywords = list.collect! {|word| word.strip }
+    self.keywords = list.collect! {|word| word.strip.downcase }
     self.keywords.uniq!
   end
 

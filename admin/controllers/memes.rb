@@ -15,7 +15,7 @@ Admin.controllers :memes do |admin|
   end
 
   get :index do
-    @memes = Meme.all
+    @memes = Meme.all.order_by [:name_lower, :asc]
     render 'memes/index'
   end
 
