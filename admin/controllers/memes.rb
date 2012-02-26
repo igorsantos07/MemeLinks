@@ -1,4 +1,18 @@
-Admin.controllers :memes do
+Admin.controllers :memes do |admin|
+
+  def admin.set_meme_image meme, file, url
+    if !file.nil?
+      meme.image_mime  = file[:head].match(/Content-Type: ([\w\/-_]*)/i)[1]
+      meme.image       = file[:tempfile].read
+    elsif !url.empty?
+      require 'net/http'
+      image = Net::HTTP.get_response URI(url)
+      if image.is_a? Net::HTTPSuccess
+        meme.image_mime = image.get_fields('content-type')[0]
+        meme.image      = image.body
+      end
+    end
+  end
 
   get :index do
     @memes = Meme.all
@@ -14,18 +28,7 @@ Admin.controllers :memes do
     @meme = Meme.new
     @meme.name = params[:meme]['name']
     @meme.creator = current_account
-
-    if !params[:meme]['image_file'].nil?
-      @meme.image_mime  = params[:meme]['image_file'][:head].match(/Content-Type: ([\w\/-_]*)/i)[1]
-      @meme.image       = params[:meme]['image_file'][:tempfile].read
-    elsif !params[:meme]['image_url'].empty?
-      require 'net/http'
-      image             = Net::HTTP.get_response URI(params[:meme]['image_url'])
-      if image.is_a? Net::HTTPSuccess
-        @meme.image_mime  = image.get_fields('content-type')[0]
-        @meme.image       = image.body
-      end
-    end
+    admin.set_meme_image @meme, params[:meme]['image_file'], params[:meme]['image_url']
 
     if @meme.save
       flash[:notice] = 'Meme was successfully created.'
@@ -42,7 +45,11 @@ Admin.controllers :memes do
 
   put :update, :with => :id do
     @meme = Meme.find(params[:id])
-    if @meme.update_attributes(params[:meme])
+    @meme.name = params[:meme]['name']
+    @meme.updater = current_account
+    admin.set_meme_image @meme, params[:meme]['image_file'], params[:meme]['image_url']
+
+    if @meme.update
       flash[:notice] = 'Meme was successfully updated.'
       redirect url(:memes, :edit, :id => @meme.id)
     else
