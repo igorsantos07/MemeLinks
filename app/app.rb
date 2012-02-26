@@ -7,6 +7,11 @@ class Memelinks < Padrino::Application
   layout  :main                   # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   set :haml, :format => :html5
 
+  get :sass, :map => '/stylesheets/:file.css' do
+    content_type 'text/css', :charset => 'utf-8'
+    sass params[:file]
+  end
+
   ##
   # Caching support
   #
