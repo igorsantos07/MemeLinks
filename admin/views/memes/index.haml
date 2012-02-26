@@ -12,6 +12,8 @@
         %tr
           %th=mat(:meme, :name)
           %th=mat(:meme, :slug)
+          %th Views (tot/ext)
+          %th=mat(:meme, :keywords)
           -#%th=mat(:meme, :created_at)
           -#%th=mat(:meme, :updated_at)
           -#%th=mat(:meme, :creator_id)
@@ -21,6 +23,8 @@
           %tr
             %td=meme.name
             %td=meme.slug
+            %td=meme.all_views_count.to_s+' / '+meme.external_count.to_s
+            %td=meme.keywords_string
             -#%td=meme.created_at.strftime '%d/%m/%Y %H:%M:%S'
             -#%td=meme.updated_at.strftime '%d/%m/%Y %H:%M:%S'
             -#%td=meme.creator.name
