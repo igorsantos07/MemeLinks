@@ -51,6 +51,7 @@ class Meme
   def keywords_string= keywords
     list = keywords.split ','
     self.keywords = list.collect! {|word| word.strip }
+    self.keywords.uniq!
   end
 
   def keywords_string
