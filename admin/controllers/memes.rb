@@ -15,8 +15,9 @@ Admin.controllers :memes do |admin|
   end
 
   get :index do
-    @memes = Meme.all.order_by [:name_lower, :asc]
-    render 'memes/index'
+    @memes = Meme.asc :name_lower
+    @top_memes = Meme.limit(20).tops
+    render 'memes/index', :layout => :two_column
   end
 
   get :new do

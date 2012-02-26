@@ -101,3 +101,8 @@ a#img img {
   border: 1px solid black;
   margin: 0px auto;
 }
+
+#sidebar .content {
+  padding: 10px !important;
+  background-color: #F0F0EE;
+}

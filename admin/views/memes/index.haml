@@ -36,4 +36,13 @@
       .actions-bar.wat-cf
         .actions="&nbsp;"
 
--content_for :sidebar, partial("base/sidebar")
+-content_for :sidebar do
+  -number_max_length = @top_memes[0].all_views_count.to_s.length
+  .block
+    %h3{:style => 'font-size: 1.3em'} Top 20 Memes
+    .content
+      %ol{:style => 'list-style-position: inside; font-size: 1.1em; line-height: 1.8em'}
+        -@top_memes.each do |meme|
+          %li
+            %tt{:style => 'font-weight: bold'}='['+meme.all_views_count.to_s.rjust(number_max_length)+']'
+            =meme.name
