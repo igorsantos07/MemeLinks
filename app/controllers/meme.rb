@@ -7,7 +7,7 @@ Memelinks.controllers :meme do
     if meme
       if request.referer.nil? or !request.referer.include? request.host+'/admin/'
         meme.inc(:all_views_count, 1)
-        meme.inc(:external_count, 1) if request.referer.nil? or !request.referer.include? request.host
+        meme.inc(:external_count, 1) unless request.referer.include? request.host
       end
       content_type meme.image_mime
       body meme.image
