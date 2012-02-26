@@ -20,6 +20,7 @@ class Meme
   field :name
   field :image, :type => Base64File
   field :image_mime
+  field :keywords
   belongs_to :creator, :class_name => 'Account'
   belongs_to :updater, :class_name => 'Account'
   slug :name, :history => true
@@ -45,6 +46,15 @@ class Meme
     end
 
     self.slug + ext
+  end
+
+  def keywords_string= keywords
+    list = keywords.split ','
+    self.keywords = list.collect! {|word| word.strip }
+  end
+
+  def keywords_string
+    self.keywords.join ', '
   end
 
   def self.find_by_filename filename

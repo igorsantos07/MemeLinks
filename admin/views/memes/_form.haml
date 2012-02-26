@@ -17,6 +17,12 @@
   =f.error_message_on :image_mime
   =f.file_field :image_file, :class => :text_field
 
+.group
+  =f.label :keywords
+  =f.error_message_on :keywords
+  =f.text_field :keywords_string, :class => :text_field
+  %span.description Comma separated; no need of adding separated words from the name field here.
+
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button
   =f.submit pat(:cancel), :onclick => "window.location='#{url(:memes, :index)}';return false", :class => :button

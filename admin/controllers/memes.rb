@@ -26,8 +26,10 @@ Admin.controllers :memes do |admin|
 
   post :create do
     @meme = Meme.new
-    @meme.name = params[:meme]['name']
-    @meme.creator = current_account
+    @meme.creator         = current_account
+    @meme.name            = params[:meme]['name']
+    @meme.keywords_string = params[:meme]['keywords_string']
+
     admin.set_meme_image @meme, params[:meme]['image_file'], params[:meme]['image_url']
 
     if @meme.save
@@ -44,9 +46,11 @@ Admin.controllers :memes do |admin|
   end
 
   put :update, :with => :id do
-    @meme = Meme.find(params[:id])
-    @meme.name = params[:meme]['name']
-    @meme.updater = current_account
+    @meme = Meme.find params[:id]
+    @meme.updater         = current_account
+    @meme.name            = params[:meme]['name']
+    @meme.keywords_string = params[:meme]['keywords_string']
+
     admin.set_meme_image @meme, params[:meme]['image_file'], params[:meme]['image_url']
 
     if @meme.update
