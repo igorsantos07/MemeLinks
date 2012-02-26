@@ -1,6 +1,6 @@
 Memelinks.controllers :base do
   get :index, :map => '/' do
-    @memes = Meme.all
+    @memes = Meme.limit(10).tops
     render 'base/index'
   end
 
