@@ -7,6 +7,7 @@ module SassInitializer
     require 'sass/plugin/rack'
     Sass::Plugin.options[:template_location] = Padrino.root("app/stylesheets")
     Sass::Plugin.options[:css_location] = Padrino.root("public/stylesheets")
+    Sass::Plugin.options[:style] = :compressed
     app.use Sass::Plugin::Rack
   end
 end
