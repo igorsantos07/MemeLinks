@@ -5,7 +5,9 @@ $total-width: 100% // Remove this for a pixel-based layout
 // all style related to width, height, and etc, for the cards,
 //are inside media-queries.sass, included in the end of this file
 
+$tone-header: #A6D7D7
 $tone1: #3C7B79
+$tone1-1: #4F8F8C
 $tone2: #A5D8D6
 $tone3: #E1F1F0
 $tone3-1: #C2DBD9
@@ -26,7 +28,7 @@ h1, h2, h3, h4, h5, h6
   a
     text-decoration: none
   a:hover
-    text-decoration: underline
+    color: $tone1-1
 
 a, a:hover
   color: $tone1
@@ -35,8 +37,9 @@ body
   background-color: $tone3
 
 #header-container
-  margin-bottom: 10px
-  border-bottom: 1px solid $tone3-2
+  z-index: 5
+  position: relative
+  border-bottom: 1px solid $tone1
   background-image: url(/images/header-pattern.png)
   #header
     width: 850px
@@ -80,6 +83,28 @@ body
         padding: 2px 3px
         color: $blacky
 
+#navbar
+  position: relative
+  z-index: 1
+  margin-top: -2px
+  margin-bottom: 10px
+  a
+    position: relative
+    display: inline-block
+    text-decoration: none
+    color: $tone1
+    background-color: $tone-header
+    border: 1px solid $tone1
+    border-top-width: 0px
+    border-radius: 0px 0px 8px 8px
+    padding: 8px 10px 2px 10px
+    font-size: 1.2em
+    margin-top: -6px
+  a:hover
+    top: 4px
+    background-color: $tone1
+    color: $tone3
+
 #messages
   width: 100%
   display: block
@@ -95,6 +120,7 @@ body
       float: left
       margin-right: 10px
       height: 38px
+
 #memes
   $radius: 10px
   div.meme

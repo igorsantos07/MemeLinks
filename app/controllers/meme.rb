@@ -6,6 +6,11 @@ Memelinks.controllers :meme do
     render 'meme/index'
   end
 
+  get :all, :map => '/todos' do
+    @memes = Meme.tops
+    render 'meme/index'
+  end
+
   get :image, :map => '/:filename', :priority => :low do
     filename = if params[:filename].is_a? Array then params[:filename][0] else params[:filename] end
     meme = Meme.find_by_filename filename

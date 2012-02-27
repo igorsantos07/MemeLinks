@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none; }
   h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
-    text-decoration: underline; }
+    color: #4f8f8c; }
 
 a, a:hover {
   color: #3c7b79; }
@@ -28,8 +28,9 @@ body {
   background-color: #e1f1f0; }
 
 #header-container {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #a0bcb9;
+  z-index: 5;
+  position: relative;
+  border-bottom: 1px solid #3c7b79;
   background-image: url(/images/header-pattern.png); }
   #header-container #header {
     width: 850px;
@@ -72,6 +73,28 @@ body {
         height: 20px;
         padding: 2px 3px;
         color: #444444; }
+
+#navbar {
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;
+  margin-bottom: 10px; }
+  #navbar a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #3c7b79;
+    background-color: #a6d7d7;
+    border: 1px solid #3c7b79;
+    border-top-width: 0px;
+    border-radius: 0px 0px 8px 8px;
+    padding: 8px 10px 2px 10px;
+    font-size: 1.2em;
+    margin-top: -6px; }
+  #navbar a:hover {
+    top: 4px;
+    background-color: #3c7b79;
+    color: #e1f1f0; }
 
 #messages {
   width: 100%;

@@ -15,13 +15,18 @@
     #header-container
       #header
         %h1
-          MemeLinks
-          %br
-          %span=".com"
+          %a{:href=>'/'}
+            MemeLinks
+            %br
+            %span=".com"
         %h2=yield_content :subtitle
         %form#search{:action => url(:meme, :search), :method => :get}
           =text_field_tag :meme, :value => params[:meme]
           %img{:src => '/images/search-button.gif', :alt => :Buscar, :onclick => '$("form#search").submit()'}
+
+    #navbar
+      =link_to 'Home', '/'
+      =link_to 'Todos os memes', url(:meme, :all)
 
     #content
       =yield
