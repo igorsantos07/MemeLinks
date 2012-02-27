@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Admin.controllers :accounts do
 
   get :index do

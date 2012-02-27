@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Base64File
   include Mongoid::Fields::Serializable
   require 'base64'

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Memelinks.controllers :meme do
 
   get :index, :map => '/' do
@@ -30,7 +31,6 @@ Memelinks.controllers :meme do
     regexp = Regexp.new params[:meme].downcase
     @memes = Meme.any_of({:name_lower => regexp}, {:keywords => regexp})
 
-    ap @memes.length
     @message = case @memes.length
       when 0 then '<img src="/images/memes/rage-face.gif" /> Não foi encontrado nenhum meme com essas palavras...'
       when 1 then '<img src="/images/memes/challenge-accepted.png" /> Encontramos um meme!<br />É esse?'

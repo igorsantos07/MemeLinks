@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Account
   include Mongoid::Document
   attr_accessor :password, :password_confirmation

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Memelinks.helpers do
 
   def log_common_request_data level = :warn

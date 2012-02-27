@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Admin.controllers :sessions do
 
   get :new do

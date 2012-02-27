@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
