@@ -2,7 +2,7 @@ Memelinks.controllers :meme do
 
   get :index, :map => '/' do
     @memes = Meme.limit(10).tops
-    render 'base/index'
+    render 'meme/index'
   end
 
   get :image, :map => '/:filename', :priority => :low do
