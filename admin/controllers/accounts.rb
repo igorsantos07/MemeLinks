@@ -30,7 +30,7 @@ Admin.controllers :accounts do
     @account = Account.find(params[:id])
     if @account.update_attributes(params[:account])
       flash[:notice] = 'Account was successfully updated.'
-      redirect url(:accounts, :edit, :id => @account.id)
+      redirect url(:accounts, :index)
     else
       render 'accounts/edit'
     end

@@ -57,7 +57,7 @@ Admin.controllers :memes do |admin|
 
     if @meme.update
       flash[:notice] = 'Meme was successfully updated.'
-      redirect url(:memes, :edit, :id => @meme.id)
+      redirect url(:memes, :index)
     else
       render 'memes/edit'
     end
