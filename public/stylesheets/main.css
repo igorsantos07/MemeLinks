@@ -57,21 +57,37 @@ body {
       width: 330px;
       margin: 0px auto;
       padding: 0px; }
-      #header-container #header form input[type=text], #header-container #header form input[type=image] {
+      #header-container #header form input, #header-container #header form img {
         display: inline-block;
         margin: 0px;
         position: absolute; }
-      #header-container #header form input[type=image] {
+      #header-container #header form img {
         right: 0px;
         width: 24px;
         height: 24px; }
-      #header-container #header form input[type=text] {
+      #header-container #header form input {
         left: 0px;
         border-width: 0px;
         width: 300px;
         height: 20px;
         padding: 2px 3px;
         color: #444444; }
+
+#messages {
+  width: 100%;
+  display: block; }
+  #messages .message {
+    width: 270px;
+    margin: 0px auto;
+    font-size: 1.25em;
+    text-align: left;
+    line-height: 1.25em;
+    vertical-align: middle;
+    height: 40px; }
+    #messages .message img {
+      float: left;
+      margin-right: 10px;
+      height: 38px; }
 
 #memes div.meme {
   background-color: white;

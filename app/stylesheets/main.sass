@@ -64,15 +64,15 @@ body
       width: 330px
       margin: 0px auto
       padding: 0px
-      input[type=text], input[type=image]
+      input, img
         display: inline-block
         margin: 0px
         position: absolute
-      input[type=image]
+      img
         right: 0px
         width: 24px
         height: 24px
-      input[type=text]
+      input
         left: 0px
         border-width: 0px
         width: 300px
@@ -80,6 +80,21 @@ body
         padding: 2px 3px
         color: $blacky
 
+#messages
+  width: 100%
+  display: block
+  .message
+    width: 270px
+    margin: 0px auto
+    font-size: 1.25em
+    text-align: left
+    line-height: 1.25em
+    vertical-align: middle
+    height: 40px
+    img
+      float: left
+      margin-right: 10px
+      height: 38px
 #memes
   $radius: 10px
   div.meme

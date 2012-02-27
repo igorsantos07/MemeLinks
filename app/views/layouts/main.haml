@@ -19,9 +19,9 @@
           %br
           %span=".com"
         %h2=yield_content :subtitle
-        %form{:action => url(:meme, :search), :method => :get}
-          =text_field_tag :meme
-          =image_submit_tag '/images/search-button.gif', :alt => :Buscar
+        %form#search{:action => url(:meme, :search), :method => :get}
+          =text_field_tag :meme, :value => params[:meme]
+          %img{:src => '/images/search-button.gif', :alt => :Buscar, :onclick => '$("form#search").submit()'}
 
     #content
       =yield

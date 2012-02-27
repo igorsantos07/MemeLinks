@@ -27,7 +27,17 @@ Memelinks.controllers :meme do
   end
 
   get :search, :map => '/search' do
+    regexp = Regexp.new params[:meme].downcase
+    @memes = Meme.any_of({:name_lower => regexp}, {:keywords => regexp})
 
+    ap @memes.length
+    @message = case @memes.length
+      when 0 then '<img src="/images/memes/rage-face.gif" /> Não foi encontrado nenhum meme com essas palavras...'
+      when 1 then '<img src="/images/memes/challenge-accepted.png" /> Encontramos um meme!<br />É esse?'
+      else "<img src=\"/images/memes/mother-of-god.gif\" /> Encontramos #{@memes.length} memes!<br />Tomara que seja um desses."
+    end
+
+    render 'meme/index'
   end
 
 end

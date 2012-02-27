@@ -1,4 +1,9 @@
--content_for :subtitle do 'Os memes mais vistos' end
+-is_search = request.path.include? 'search'
+-content_for :subtitle do
+  -if is_search
+    Busca de memes
+  -else
+    Os memes mais vistos
 
 -content_for :other_css do
   =stylesheet_link_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.css'
@@ -19,6 +24,10 @@
     })
 
 -#---------------------------------------------------------------------------------------------------
+
+-unless @message.nil?
+  #messages
+    .message=@message
 
 #memes
   -@memes.each do |meme|
