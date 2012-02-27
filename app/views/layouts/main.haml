@@ -12,9 +12,16 @@
     =yield_content :important_js
 
   %body
-    #header
-      %h1 MemeLinks.com
-      %h2=yield_content :subtitle
+    #header-container
+      #header
+        %h1
+          MemeLinks
+          %br
+          %span=".com"
+        %h2=yield_content :subtitle
+        %form{:action => url(:meme, :search), :method => :get}
+          =text_field_tag :meme
+          =image_submit_tag '/images/search-button.gif', :alt => :Buscar
 
     #content
       =yield

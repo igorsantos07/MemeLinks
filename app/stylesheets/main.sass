@@ -34,11 +34,51 @@ a, a:hover
 body
   background-color: $tone3
 
-#header
-  padding-top: 10px
+#header-container
   margin-bottom: 10px
-  border-bottom: 1px solid black
+  border-bottom: 1px solid $tone3-2
   background-image: url(/images/header-pattern.png)
+  #header
+    width: 850px
+    height: 85px
+    position: relative
+    margin: 0px auto
+    h1
+      position: absolute
+      left: 20px
+      text-align: right
+      font-size: 4.5em
+      span
+        display: block
+        margin-top: -0.3em
+        font-size: 0.7em
+    h2
+      position: absolute
+      right: 10px
+      line-height: 50px
+    form
+      display: inline-block
+      position: absolute
+      bottom: 24px
+      right: 10px
+      width: 330px
+      margin: 0px auto
+      padding: 0px
+      input[type=text], input[type=image]
+        display: inline-block
+        margin: 0px
+        position: absolute
+      input[type=image]
+        right: 0px
+        width: 24px
+        height: 24px
+      input[type=text]
+        left: 0px
+        border-width: 0px
+        width: 300px
+        height: 20px
+        padding: 2px 3px
+        color: $blacky
 
 #memes
   $radius: 10px
