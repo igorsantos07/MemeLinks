@@ -16,7 +16,11 @@ Memelinks.controllers :meme do
     meme = Meme.find_by_filename filename
 
     if meme
-      if request.referer.nil? or !request.referrer.include? request.host+'/admin/'
+      if !params['y'].nil? or request.referer.nil? or (
+        !request.referrer.include? request.host + '/admin/' and #if it doesn't come from admin pages
+        !(request.referrer =~ Regexp.new(request.host+"\/?")) and #or from the homepage
+        !request.referrer.include? request.host + url(:meme,:all) #or from :all action
+      )
         meme.inc(:all_views_count, 1)
         meme.inc(:external_count, 1) if !request.referer.nil? and !request.referrer.include? request.host
       end

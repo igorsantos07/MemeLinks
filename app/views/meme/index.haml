@@ -36,4 +36,4 @@
       .heading
         %h3=link_to meme.name, show_url
         %a.link{ :href => img_url, 'data-short-href' => request.host+img_url }='http://'+request.host+img_url
-      %a.meme{ :href => img_url, :title => meme.name }=image_tag img_url
+      %a.meme{ :href => img_url+'?y', :title => meme.name }=image_tag img_url
