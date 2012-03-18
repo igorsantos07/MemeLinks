@@ -65,13 +65,4 @@ Admin.controllers :memes do |admin|
     end
     redirect url(:memes, :index)
   end
-
-  get :fix_status do
-    memes = Meme.all
-    memes.each do |meme|
-      meme.update_attribute :status, Meme::Status[:active] if meme.status.nil?
-    end
-
-    redirect url :memes, :index
-  end
 end
