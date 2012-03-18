@@ -18,6 +18,11 @@
   =f.file_field :image_file, :class => :text_field
 
 .group
+  =f.label :status
+  =f.error_message_on :status
+  =f.select :status, :options => Meme::Status
+
+.group
   =f.label :keywords
   =f.error_message_on :keywords
   =f.text_field :keywords_string, :class => :text_field

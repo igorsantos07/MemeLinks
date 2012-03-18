@@ -1,20 +1,6 @@
 # -*- encoding : utf-8 -*-
 Admin.controllers :memes do |admin|
 
-  def admin.set_meme_image meme, file, url
-    if !file.nil?
-      meme.image_mime  = file[:head].match(/Content-Type: ([\w\/-_]*)/i)[1]
-      meme.image       = file[:tempfile].read
-    elsif !url.empty?
-      require 'net/http'
-      image = Net::HTTP.get_response URI(url)
-      if image.is_a? Net::HTTPSuccess
-        meme.image_mime = image.get_fields('content-type')[0]
-        meme.image      = image.body
-      end
-    end
-  end
-
   get :index do
     @memes = Meme.asc :name_lower
     @top_memes = Meme.limit(20).tops
@@ -49,11 +35,18 @@ Admin.controllers :memes do |admin|
 
   put :update, :with => :id do
     @meme = Meme.find params[:id]
+    p @meme.status
     @meme.updater         = current_account
     @meme.name            = params[:meme]['name']
+    @meme.status          = params[:meme]['status']
     @meme.keywords_string = params[:meme]['keywords_string']
+    p @meme.status
 
-    admin.set_meme_image @meme, params[:meme]['image_file'], params[:meme]['image_url']
+    if !params[:meme]['image_url'].nil?
+      @meme.image_url = params[:meme]['image_url']
+    elsif !params[:meme]['image_file'].nil?
+      @meme.image_file = params[:meme]['image_file']
+    end
 
     if @meme.update
       flash[:notice] = 'Meme was successfully updated.'
@@ -71,5 +64,14 @@ Admin.controllers :memes do |admin|
       flash[:error] = 'Unable to destroy Meme!'
     end
     redirect url(:memes, :index)
+  end
+
+  get :fix_status do
+    memes = Meme.all
+    memes.each do |meme|
+      meme.update_attribute :status, Meme::Status[:active] if meme.status.nil?
+    end
+
+    redirect url :memes, :index
   end
 end
