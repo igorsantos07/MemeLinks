@@ -6,7 +6,7 @@ class Memelinks < Padrino::Application
   register Padrino::Helpers
 
   enable :sessions
-  layout  :main                   # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
+  layout :main
   set :haml, :format => :html5
 
   get :sass, :map => '/stylesheets/:file.css' do
