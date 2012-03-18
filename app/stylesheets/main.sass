@@ -36,6 +36,9 @@ a, a:hover
 body
   background-color: $tone3
 
+#flash-messages
+  margin: 0px 50px
+
 #header-container
   z-index: 5
   position: relative
@@ -102,8 +105,14 @@ body
     margin-top: -6px
   a:hover
     top: 4px
+  a:hover, a.inverse
     background-color: $tone1
     color: $tone3
+  a.inverse
+    font-size: 1.4em
+    font-weight: bold
+  a.inverse:hover
+    top: 6px
 
 #messages
   width: 100%
@@ -154,5 +163,42 @@ body
   color: $blacky
   font-size: 2.2em
   margin-bottom: 0px
+
+#suggest
+  width: 380px
+  margin: 0px auto
+  text-align: left
+  .group
+    display: block
+    margin: 20px 0px 10px 0px
+  .group.separator
+    margin: -5px 0px -15px 0px
+    text-align: center
+    font: bold 1.5em sans-serif
+
+  label
+    display: inline-block
+    width: 100px
+    text-align: right
+  input[type=text], input[type=file]
+    margin: 0px
+    width: 270px
+  span.error
+    display: block
+    white-space: nowrap
+    border-width: 0px
+    background: none
+    font: italic 1.2em sans-serif
+    padding: 3px 0px 0px 10px
+    text-align: center
+    &:empty
+      display: none
+  .navform
+    text-align: center
+    input[type=submit]
+      width: 250px
+      height: 40px
+      font-size: 1.5em
+      margin: 10px auto
 
 @import 'media-queries.sass'

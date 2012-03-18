@@ -1,0 +1,22 @@
+-form_for :meme, url(:meme, :suggest), :id => :suggest, :enctype => "multipart/form-data" do |f|
+  .group
+    =f.label :name, :caption => 'Nome'
+    =f.text_field :name
+    =f.error_message_on :name
+
+  .group
+    =f.label :image_url, :caption => 'URL da imagem'
+    =f.text_field :image_url
+
+  .group.separator
+    ='~~&nbsp;&nbsp;&nbsp;OU&nbsp;&nbsp;&nbsp;~~'
+
+  .group
+    =f.label :image_file, :caption => 'Arquivo'
+    =f.file_field :image_file
+    =f.error_message_on :image_file
+    =f.error_message_on :image_mime
+    =f.error_message_on :image_url
+
+  .group.navform
+    =f.submit 'Sugerir'

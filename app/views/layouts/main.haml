@@ -27,8 +27,11 @@
     #navbar
       =link_to 'Home', '/'
       =link_to 'Todos os memes', url(:meme, :all)
+      =link_to 'Sugira um!', url(:meme, :suggest), :class => :inverse
 
     #content
+      #flash-messages
+        .flash=[:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join
       =yield
 
     =javascript_include_tag '/javascripts/jquery-ujs'
