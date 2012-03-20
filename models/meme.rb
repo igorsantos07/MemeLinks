@@ -106,7 +106,7 @@ class Meme
       self[:image_mime] = image.get_fields('content-type')[0]
       self[:image]      = image.body
     else
-      logger.error "Couldn't get image. Return: #{image.class}. URL: #{url}"
+      puts "[ERROR]       Couldn't get image. Return: #{image.class}. URL: #{url}"
     end
   end
 
