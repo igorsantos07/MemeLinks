@@ -13,12 +13,8 @@ Admin.controllers :memes do |admin|
   end
 
   post :create do
-    @meme = Meme.new
-    @meme.creator         = current_account
-    @meme.name            = params[:meme]['name']
-    @meme.keywords_string = params[:meme]['keywords_string']
-
-    admin.set_meme_image @meme, params[:meme]['image_file'], params[:meme]['image_url']
+    @meme = Meme.new params[:meme]
+    @meme.creator = current_account
 
     if @meme.save
       flash[:notice] = 'Meme was successfully created.'
@@ -35,20 +31,10 @@ Admin.controllers :memes do |admin|
 
   put :update, :with => :id do
     @meme = Meme.find params[:id]
-    p @meme.status
-    @meme.updater         = current_account
-    @meme.name            = params[:meme]['name']
-    @meme.status          = params[:meme]['status']
-    @meme.keywords_string = params[:meme]['keywords_string']
-    p @meme.status
+    @meme.attributes = params[:meme]
+    @meme.updater = current_account
 
-    if !params[:meme]['image_url'].nil?
-      @meme.image_url = params[:meme]['image_url']
-    elsif !params[:meme]['image_file'].nil?
-      @meme.image_file = params[:meme]['image_file']
-    end
-
-    if @meme.update
+    if @meme.save
       flash[:notice] = 'Meme was successfully updated.'
       redirect url(:memes, :index)
     else
