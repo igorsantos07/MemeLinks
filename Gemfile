@@ -15,7 +15,7 @@ gem 'mongoid'
 gem 'bson_ext', :require => "mongo"
 gem 'mongoid_slug'
 
-# Ramdon requirements
+# Random requirements
 gem 'awesome_print'
 gem 'term-ansicolor'
 
