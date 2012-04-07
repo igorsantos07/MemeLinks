@@ -34,7 +34,7 @@ Memelinks.controllers :meme do
   end
 
   get :show, :map => '/meme/:slug' do
-    redirect url(:meme, :image, :slug => params[:slug])
+    redirect url(:meme, :image, :filename => params[:slug])
   end
 
   get :search, :map => '/search' do
