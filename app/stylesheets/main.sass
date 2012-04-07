@@ -12,6 +12,7 @@ $tone2: #A5D8D6
 $tone3: #E1F1F0
 $tone3-1: #C2DBD9
 $tone3-2: #A0BCB9
+$shadow: #182F2F
 $gray: #666
 $grey: #666
 $blacky: #444
@@ -130,32 +131,36 @@ body
       margin-right: 10px
       height: 38px
 
+@mixin meme-box($radius: 10px)
+  background-color: white
+  display: inline-block
+  text-align: center
+  border: 1px solid $tone3-2
+  border-radius: $radius
+  margin-top: 8px !important
+  margin-bottom: 8px !important
+  padding: 0px
+  overflow: hidden
+  .heading
+    border-radius: $radius $radius 0px 0px
+    background-color: $tone3
+    padding: 10px 0px 5px 0px
+    h3
+      margin-bottom: 0px
+      font-size: 2em
+
 #memes
-  $radius: 10px
   div.meme
-    background-color: white
-    display: inline-block
-    text-align: center
-    border: 1px solid $tone3-2
-    border-radius: $radius
-    margin-top: 8px !important
-    margin-bottom: 8px !important
-    padding: 0px
-    overflow: hidden
+    @include meme-box(10px)
     .heading
       min-height: 50px
-      border-radius: $radius $radius 0px 0px
-      background-color: $tone3
-      padding: 10px 0px 5px 0px
-      h3
-        margin-bottom: 0px
-        font-size: 2em
     img
       max-width: 95%
       max-height: 325px
       margin: 10px auto 5px auto
       display: block
   div.meme:hover
+    box-shadow: $shadow 0px 0px 10px
     .heading
       background-color: $tone3-1
 
@@ -163,6 +168,37 @@ body
   color: $blacky
   font-size: 2.2em
   margin-bottom: 0px
+
+#meme
+  @include meme-box(20px)
+  min-width: 530px
+  margin: 20px !important
+  box-shadow: $shadow 0px 0px 25px
+  .heading
+    min-height: 35px
+    h3
+      font-size: 2.5em
+  img
+    margin: 10px
+  #keywords
+    margin-bottom: 20px
+    h4
+      font-size: 1.7em
+      margin-bottom: 8px
+    ul
+      li
+        font-size: 1.1em
+        display: inline-block
+        a
+          font-style: italic
+          text-decoration: none
+          color: $tone1
+          background-color: $tone3
+          border: 1px solid $tone3-2
+          border-radius: 5px
+          padding: 5px 10px
+        a:hover
+          background-color: $tone3-2
 
 #suggest
   width: 380px

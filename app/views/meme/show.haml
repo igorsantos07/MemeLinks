@@ -1,0 +1,14 @@
+-content_for :subtitle do
+  Meme Card
+
+#meme
+  .heading
+    %h3=@meme.name
+  =image_tag url(:meme, :image, :filename => @meme.filename)+'?y'
+  -if @meme.keywords.length > 0
+    #keywords
+      %h4='Tag'+(@meme.keywords.length > 1? 's' : '')
+      %ul
+        -@meme.keywords.each do |word|
+          %li
+            %a{:href => url(:meme, :search, :meme => word)}=word

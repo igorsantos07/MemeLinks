@@ -34,7 +34,9 @@ Memelinks.controllers :meme do
   end
 
   get :show, :map => '/meme/:slug' do
-    redirect url(:meme, :image, :filename => params[:slug])
+    @meme = Meme.find_by_slug params[:slug]
+    halt 404, 'Meme not found :(' if not @meme
+    render 'meme/show'
   end
 
   get :search, :map => '/search' do
