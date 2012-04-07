@@ -1,7 +1,8 @@
--is_search = request.path.include? 'search'
 -content_for :subtitle do
-  -if is_search
+  -if request.path.start_with? url(:meme, :search)
     Busca de memes
+  -elsif request.path.start_with? url(:meme, :all)
+    Todos os memes
   -else
     Os memes mais vistos
 
