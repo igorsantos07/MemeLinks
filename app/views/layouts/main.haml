@@ -1,3 +1,4 @@
+-# -*- encoding : utf-8 -*-
 -subtitle = (yield_content(:subtitle) || '').strip
 -title = 'MemeLinks ['+(subtitle.empty?? 'Encontre a imagem e o link do seu meme e use nas redes sociais' : subtitle)+']'
 
@@ -31,6 +32,7 @@
     #navbar
       =link_to 'Home', '/'
       =link_to 'Todos os memes', url(:meme, :all)
+      =link_to 'Sobre', url(:main, :about)
       =link_to 'Sugira um!', url(:meme, :suggest), :class => :inverse
 
     #content
