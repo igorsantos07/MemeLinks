@@ -40,7 +40,8 @@ class Meme
   validates_presence_of :name, :message => 'Faltou o nome!'
   validates_presence_of :creator, :if => proc { |obj| obj.ip_user_creator.nil? }, :message => 'Criador inválido'
   validates_presence_of :status
-  validates_presence_of :image, :image_mime, :if => proc { |obj| obj.new_record? }, :message => 'Faltou a imagem!'
+  validates_presence_of :image, :image_mime, :on => :create , :message => 'Faltou a imagem!'
+  validates_format_of :image_mime, :with => /^image\/(jpeg|jpg|png|gif)$/, :message => 'Arquivo no formato incorreto.'
   validates_presence_of :updater, :if => proc { |obj| !obj.new_record? }
   validates_uniqueness_of :name, :slug
 
