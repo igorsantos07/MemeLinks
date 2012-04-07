@@ -1,33 +1,32 @@
 source :rubygems
 
-group :default do
-  # Server requirements (defaults to WEBrick)
-  gem 'thin'
+# Server requirements (defaults to WEBrick)
+gem 'thin'
 
-  # Project requirements
-  gem 'rake'
-  gem 'sinatra-flash', :require => 'sinatra/flash'
+# Project requirements
+gem 'rake'
+gem 'sinatra-flash', :require => 'sinatra/flash'
 
-  # Component requirements
-  gem 'bcrypt-ruby', :require => "bcrypt"
-  gem 'sass'
-  gem 'haml'
-  gem 'mongoid'
-  gem 'bson_ext', :require => "mongo"
-  gem 'mongoid_slug'
+# Component requirements
+gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'sass'
+gem 'haml'
+gem 'mongoid'
+gem 'bson_ext', :require => "mongo"
+gem 'mongoid_slug'
 
-  # Random requirements
-  gem 'awesome_print'
-  gem 'term-ansicolor'
+# Random requirements
+gem 'awesome_print'
+gem 'term-ansicolor'
 
-  # Test requirements
+# Test requirements
 
-  # Padrino Stable Gem
-  gem 'padrino', '0.10.5'
-end
+# Padrino Stable Gem
+gem 'padrino', '0.10.5'
 
 group :production do
-  gem 'newrelic_rpm'
+	gem 'padrino-rpm', '~> 0.6'
+	gem 'newrelic_rpm'
 end
 # Or Padrino Edge
 # gem 'padrino', :git => 'git://github.com/padrino/padrino-framework.git'
