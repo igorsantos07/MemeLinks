@@ -1,3 +1,6 @@
+-content_for :subtitle do
+  Sugira um meme!
+
 -form_for :meme, url(:meme, :suggest), :id => :suggest, :enctype => "multipart/form-data" do |f|
   .group
     =f.label :name, :caption => 'Nome'
