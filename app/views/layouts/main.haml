@@ -7,6 +7,7 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
     =stylesheet_link_tag :ie, :screen, :main
     =stylesheet_link_tag :print, :media => :print
+    =stylesheet_link_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.css'
     =yield_content :other_css
     =javascript_include_tag '/javascripts/jquery'
     =yield_content :important_js
@@ -34,6 +35,9 @@
         .flash=[:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join
       =yield
 
-    =javascript_include_tag '/javascripts/jquery-ujs'
+    =javascript_include_tag '/javascripts/fancybox/jquery.mousewheel-3.0.4.pack'
+    =javascript_include_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.pack'
+    =javascript_include_tag '/javascripts/application'
+    -#=javascript_include_tag '/javascripts/jquery-ujs'
     =yield_content :other_js
     =render_partial 'layouts/getclicky'
