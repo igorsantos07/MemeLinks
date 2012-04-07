@@ -1,0 +1,15 @@
+-# -*- encoding : utf-8 -*-
+-content_for :subtitle do
+  Sobre isso aqui
+
+#about
+  %h2
+    Sobre o MemeLinks.com
+
+  %p Esse site foi criado com o intuito de facilitar àqueles usuários do Facebook que às vezes se pegam buscando na Internet pela imagem de um meme só para responder um post de um amigo.
+  %p Aqui você encontra a maioria dos memes mais comuns das Interwebs; daí é só copiar o link exibido no card do meme e colar no Face. O resto você deixa que ele faz! Quando você postar, a imagem vai aparecer sozinha, ou na pior das hipóteses, dentro de uns minutos #{emoticon :equal_grin}
+
+  %p Não achou o meme que tava procurando? #{emoticon :wince} Nos ajude! #{link_to 'Sugira-o', url(:meme, :suggest)}. É bem fácil, você só precisa da URL ou do arquivo e de um nome pro meme. E a aprovação normalmente é bem rápida - ou você já tava pensando em floodar o site cheio de imagens aleatórias? Sim, tem aprovação. A menos que você dê azar de eu estar ocupado na hora.
+
+  %p Hmmm... ficou curioso pra saber quem é o "eu" da linha de cima? Meu nome é #{link_to 'Igor Santos, sou desenvolvedor web', 'http://www.igorsantos.com.br', :target => :_blank}. Nas horas vagas estou cuidando de projetos legais como esse #{emoticon :cool}
+  %p Aliás, se tiver alguma sugestão/crítica/elogio/xingamento, pode mandar um #{mail_to 'igorsantos07@gmail.com', 'e-mail pra mim'} ou mandar um meme no #{link_to 'meu Facebook', 'http://www.facebook.com/igorsantos07', :target => :_blank}. #{emoticon :wink_big_nose}
