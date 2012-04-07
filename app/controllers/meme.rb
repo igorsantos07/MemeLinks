@@ -40,7 +40,7 @@ Memelinks.controllers :meme do
   end
 
   get :search, :map => '/search' do
-    regexp = Regexp.new params[:meme].downcase
+    regexp = Regexp.new params[:q].downcase
     @memes = Meme.active.any_of({:name_lower => regexp}, {:keywords => regexp})
 
     @message = case @memes.length

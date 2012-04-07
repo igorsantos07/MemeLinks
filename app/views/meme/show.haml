@@ -11,4 +11,4 @@
       %ul
         -@meme.keywords.each do |word|
           %li
-            %a{:href => url(:meme, :search, :meme => word)}=word
+            %a{:href => url(:meme, :search, :q => word)}=word

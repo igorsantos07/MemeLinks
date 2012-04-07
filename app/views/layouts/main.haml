@@ -25,7 +25,7 @@
             %span=".com"
         %h2=subtitle
         %form#search{:action => url(:meme, :search), :method => :get}
-          =text_field_tag :meme, :value => params[:meme]
+          =text_field_tag :q, :value => params[:q]
           %img{:src => '/images/search-button.gif', :alt => :Buscar, :onclick => '$("form#search").submit()'}
 
     #navbar
