@@ -1,4 +1,4 @@
--subtitle = (yield_content :subtitle).strip
+-subtitle = (yield_content(:subtitle) || '').strip
 -title = 'MemeLinks ['+(subtitle.empty?? 'Encontre a imagem e o link do seu meme e use nas redes sociais' : subtitle)+']'
 
 !!! Strict
