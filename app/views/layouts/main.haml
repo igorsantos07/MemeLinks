@@ -1,9 +1,12 @@
+-subtitle = (yield_content :subtitle).strip
+-title = 'MemeLinks ['+(subtitle.empty?? 'Encontre a imagem e o link do seu meme e use nas redes sociais' : subtitle)+']'
+
 !!! Strict
 %html{:lang => "pt", :xmlns => "http://www.w3.org/1999/xhtml"}
 
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
-    %title MemeLinks - Encontre a imagem e o link do seu meme e use nas redes sociais
+    %title=title
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
     =stylesheet_link_tag :ie, :screen, :main
     =stylesheet_link_tag :print, :media => :print
@@ -20,7 +23,7 @@
             MemeLinks
             %br
             %span=".com"
-        %h2=yield_content :subtitle
+        %h2=subtitle
         %form#search{:action => url(:meme, :search), :method => :get}
           =text_field_tag :meme, :value => params[:meme]
           %img{:src => '/images/search-button.gif', :alt => :Buscar, :onclick => '$("form#search").submit()'}
