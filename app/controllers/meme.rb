@@ -57,6 +57,11 @@ Memelinks.controllers :meme do
   end
 
   post :suggest, :map => '/sugira' do
+    if !recaptcha_valid?
+      logger.error 'Invalid recaptcha'
+      render 'meme/suggest'
+    end
+
     @meme = Meme.new
     @meme.name    = params['meme']['name']
     @meme.status  = :pending

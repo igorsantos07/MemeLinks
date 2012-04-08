@@ -5,15 +5,36 @@ class Memelinks < Padrino::Application
   register Padrino::Mailer
   register Padrino::Helpers
 
+######################## VARIOUS SETTINGS ########################
   enable :sessions
   layout :main
   set :haml, :format => :html5
 
+######################## SASS ROUTE ########################
   get :sass, :map => '/stylesheets/:file.css' do
     content_type 'text/css', :charset => 'utf-8'
     sass params[:file]
   end
 
+######################## RECAPTCHA SETTINGS ########################
+  recaptcha_config = {}
+  configure :production do
+    recaptcha_config = {
+      :public_key  => ENV['RECAPTCHA_PUBLIC'],
+      :private_key => ENV['RECAPTCHA_SECRET']
+    }
+  end
+  configure :development, :test do
+    recaptcha_config = {
+      :public_key  => '6LdE-s8SAAAAADlBlHU7ZOqHX0qDqBxtmX6VoX5F',
+      :private_key => '6LdE-s8SAAAAAKxkEKfd02t27FctDjNcgRAuF0--,'
+    }
+  end
+  use Rack::Recaptcha, recaptcha_config
+  helpers Rack::Recaptcha::Helpers
+
+
+######################## DEFAULT SHIT ########################
   ##
   # Caching support
   #

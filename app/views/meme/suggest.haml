@@ -22,5 +22,8 @@
     =f.error_message_on :image_mime
     =f.error_message_on :image_url
 
+  .group
+    =recaptcha_tag :challenge, :display => {:theme => :white}
+
   .group.navform
     =f.submit 'Sugerir'

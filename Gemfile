@@ -18,6 +18,7 @@ gem 'mongoid_slug'
 # Random requirements
 gem 'awesome_print'
 gem 'term-ansicolor'
+gem 'rack-recaptcha', :require => 'rack/recaptcha'
 
 # Test requirements
 
