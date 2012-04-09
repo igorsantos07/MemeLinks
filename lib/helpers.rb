@@ -1,6 +1,6 @@
 def production_config dev_file, prod_config
   case PADRINO_ENV
-    when :production then prod_config
+    when 'production' then prod_config
     else
       mail_config = "#{PADRINO_ROOT}/config/#{dev_file}.yml"
       if File.exists? mail_config
