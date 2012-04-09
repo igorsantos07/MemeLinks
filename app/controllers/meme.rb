@@ -81,6 +81,7 @@ Memelinks.controllers :meme do
       render 'meme/suggest'
     else
       @meme.save
+      deliver :users, :suggested_meme, @meme, request
       flash[:notice] = 'Muito obrigado! Sua sugestão foi salva e, se aprovada, entrará para o acervo do site :D'
       redirect '/'
     end
