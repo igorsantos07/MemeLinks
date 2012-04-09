@@ -23,6 +23,6 @@
       -form_for :meme, url(:memes, :update, :id => @meme.id), :method => :put, :class => :form, :enctype => "multipart/form-data"  do |f|
         =partial "memes/form", :locals => { :f => f }
 
-      %a#img{:href => '/'+@meme.filename}=image_tag '/'+@meme.filename
+      %a#img{:href => Memelinks.url(:meme, :image, :filename => @meme.filename)}=image_tag '/'+@meme.filename
 
 -content_for :sidebar, partial("base/sidebar")
