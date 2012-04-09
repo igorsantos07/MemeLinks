@@ -16,6 +16,22 @@ class Memelinks < Padrino::Application
     sass params[:file]
   end
 
+######################## MAIL SETTINGS ########################
+  mail_settings = production_config :mail, {
+    :user_name => ENV['EMAIL_USERNAME'],
+    :password => ENV['EMAIL_PASSWORD']
+  }
+  set :delivery_method, :smtp => {
+    :address              => 'smtp.gmail.com',
+    :port                 => 587,
+    :user_name            => mail_settings[:user_name],
+    :password             => mail_settings[:password],
+    :authentication       => :plain,
+    :enable_starttls_auto => true
+  }
+  set :mailer_defaults, :from => 'no-reply@memelinks.com'
+  set :mailer_defaults, :to => 'igor.santos@memelinks.com'
+
 ######################## RECAPTCHA SETTINGS ########################
   recaptcha_config = production_config :recaptcha, {
     :public_key  => ENV['RECAPTCHA_PUBLIC'],
