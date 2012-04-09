@@ -57,7 +57,7 @@ Memelinks.controllers :meme do
   end
 
   post :suggest, :map => '/sugira' do
-    if !recaptcha_valid?
+    if PADRINO_ENV != 'development' and !recaptcha_valid?
       logger.error 'Invalid recaptcha'
       render 'meme/suggest'
     end
