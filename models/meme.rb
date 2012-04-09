@@ -102,12 +102,16 @@ class Meme
     return if url.nil? or url.empty?
 
     require 'net/http'
-    image = Net::HTTP.get_response URI(url)
-    if image.is_a? Net::HTTPSuccess
-      self[:image_mime] = image.get_fields('content-type')[0]
-      self[:image]      = image.body
-    else
-      puts "[ERROR]       Couldn't get image. Return: #{image.class}. URL: #{url}"
+    begin
+      image = Net::HTTP.get_response URI(url)
+      if image.is_a? Net::HTTPSuccess
+        self[:image_mime] = image.get_fields('content-type')[0]
+        self[:image]      = image.body
+      else
+        puts "[ERROR]       Couldn't get image. Return: #{image.class}. URL: #{url}"
+      end
+    rescue SocketError
+        puts "[ERROR]       SocketError when capturing image. URL: #{url}"
     end
   end
 
