@@ -26,7 +26,7 @@ Admin.controllers :memes do |admin|
 
   get :edit, :with => :id do
     @meme = Meme.find(params[:id])
-    render 'memes/edit'
+    render 'memes/edit', :layout => :two_column
   end
 
   put :update, :with => :id do

@@ -25,4 +25,11 @@
 
       %a#img{:href => Memelinks.url(:meme, :image, :filename => @meme.filename)}=image_tag '/'+@meme.filename
 
--content_for :sidebar, partial("base/sidebar")
+-content_for :sidebar do
+  .block
+    %h3 Quick actions
+    .content
+      %ul.navigation
+        %li=link_to 'Delete this', url(:memes, :destroy, :id => @meme.id), :method => :delete, :confirm => pat(:confirm)
+        -if @meme.status != Meme::Status[:active]
+          %li=link_to 'Approve it'
