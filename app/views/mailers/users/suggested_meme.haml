@@ -1,7 +1,10 @@
+-# -*- encoding : utf-8 -*-
 %p Falae!
 
-%p Tem meme novo sendo sugerido. Esse é o <b>"#{meme.name}"</b>. A imagem foi anexada para fins de consulta.
-
 %p
-  %a{:href => url+Admin.url(:memes, :edit, :id => meme.id)} Aprovar
-  %a{:href => url+Admin.url(:memes, :destroy, :id => meme.id)} Reprovar
+  Tem meme novo sendo sugerido. Vai lá no Admin dar uma olhada!
+  %br
+  %strong Meme:
+  %a{:href => url+Admin.url(:memes, :edit, :id => meme.id)}='"'+meme.name+'"'
+
+%p Att,<br />MemeBot
