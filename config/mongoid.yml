@@ -1,8 +1,10 @@
 development:
   uri: mongodb://localhost:27017/memelinks_development
+  logger: false
 
 test:
   uri: mongodb://localhost:27017/memelinks_test
+  logger: false
 
 production:
   uri: <%=ENV['MONGOLAB_URI']%>
