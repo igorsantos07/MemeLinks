@@ -17,15 +17,12 @@ Memelinks.controllers :meme do
     meme = (from_admin)? Meme.find_by_filename(filename) : Meme.active.find_by_filename(filename)
 
     if meme
-      if (request.referrer.nil? or !request.referrer.include?(request.host)) and !params[:embed].nil?
-        logger.info "Redirecting from #{request.url}"
+      # should redirect to meme:show if the request is not coming from us and there's no ?embed
+      if (request.referrer.nil? or !request.referrer.include?(request.host)) and !params.has_key?('embed')
         redirect url(:meme, :show, :slug => meme.slug)
-      else
-        logger.info "NOT Redirecting from #{request.url}"
-        log_common_request_data params
       end
 
-      if !params['y'].nil? or request.referer.nil? or (
+      if params.has_key?('y') or request.referer.nil? or (
         !from_admin and #if it doesn't come from admin pages
         !(request.referrer =~ Regexp.new(request.host+"\/?")) and #or from the homepage
         !request.referrer.include? request.host + url(:meme,:all) #or from :all action
