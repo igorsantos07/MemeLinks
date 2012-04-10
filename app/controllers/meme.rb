@@ -24,7 +24,6 @@ Memelinks.controllers :meme do
         logger.info "NOT Redirecting from #{request.url}"
         log_common_request_data params
       end
-      end
 
       if params.has_key?('y') or params.has_key?('embed') or request.referer.nil? or (
         !from_admin and #if it doesn't come from admin pages
