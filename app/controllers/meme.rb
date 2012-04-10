@@ -26,7 +26,7 @@ Memelinks.controllers :meme do
       end
       end
 
-      if params.has_key?('y') or request.referer.nil? or (
+      if params.has_key?('y') or params.has_key?('embed') or request.referer.nil? or (
         !from_admin and #if it doesn't come from admin pages
         !(request.referrer =~ Regexp.new(request.host+"\/?")) and #or from the homepage
         !request.referrer.include? request.host + url(:meme,:all) #or from :all action
