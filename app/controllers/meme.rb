@@ -17,8 +17,12 @@ Memelinks.controllers :meme do
     meme = (from_admin)? Meme.find_by_filename(filename) : Meme.active.find_by_filename(filename)
 
     if meme
-      if request.referrer.nil? or !request.referrer.include? request.host
+      if (request.referrer.nil? or !request.referrer.include? request.host) and params[:embed].nil?
+        logger.info "Redirecting from #{request.url}"
         redirect url(:meme, :show, :slug => meme.slug)
+      else
+        logger.info "NOT Redirecting from #{request.url}"
+        log_common_request_data
       end
 
       if !params['y'].nil? or request.referer.nil? or (
