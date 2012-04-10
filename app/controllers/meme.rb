@@ -13,10 +13,14 @@ Memelinks.controllers :meme do
 
   get :image, :map => '/:filename', :priority => :low do
     from_admin = !request.referrer.nil? and request.referrer.include? request.host + '/admin/'
-    filename = if params[:filename].is_a? Array then params[:filename][0] else params[:filename] end
+    filename = params[:filename].is_a?(Array)? params[:filename][0] : params[:filename]
     meme = (from_admin)? Meme.find_by_filename(filename) : Meme.active.find_by_filename(filename)
 
     if meme
+      if request.referrer.nil? or !request.referrer.include? request.host
+        redirect url(:meme, :show, :slug => meme.slug)
+      end
+
       if !params['y'].nil? or request.referer.nil? or (
         !from_admin and #if it doesn't come from admin pages
         !(request.referrer =~ Regexp.new(request.host+"\/?")) and #or from the homepage
