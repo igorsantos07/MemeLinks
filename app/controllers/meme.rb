@@ -18,10 +18,10 @@ Memelinks.controllers :meme do
 
     if meme
       # should redirect to meme:show if the request is not coming from us and there's no ?embed
-      if (request.referrer.nil? or !request.referrer.include?(request.host)) and !params.has_key?('embed')
-        redirect url(:meme, :show, :slug => meme.slug)
-      else
-        log_common_request_data params
+#      if (request.referrer.nil? or !request.referrer.include?(request.host)) and !params.has_key?('embed')
+#        redirect url(:meme, :show, :slug => meme.slug)
+#      else
+#        log_common_request_data params
 
       ############################################ STATISTICAL COUNTER ############################################
         if params.has_key?('y') or params.has_key?('embed') or request.referer.nil? or (
@@ -36,7 +36,7 @@ Memelinks.controllers :meme do
         headers 'cache-control' => 'no-cache', 'pragma' => 'no-cache' unless params.has_key?('embed')
         content_type meme.image_mime
         body meme.image
-      end
+#      end
     else
       logger.error params.inspect
       halt 404, 'Meme not found :('
