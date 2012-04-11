@@ -21,6 +21,7 @@ Memelinks.controllers :meme do
       if (request.referrer.nil? or !request.referrer.include?(request.host)) and !params.has_key?('embed')
         redirect url(:meme, :show, :slug => meme.slug)
       else
+        log_common_request_data params
 
       ############################################ STATISTICAL COUNTER ############################################
         if params.has_key?('y') or params.has_key?('embed') or request.referer.nil? or (
