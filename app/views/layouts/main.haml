@@ -3,18 +3,22 @@
 -title = 'MemeLinks ['+(subtitle.empty?? 'Encontre a imagem e o link do seu meme e use nas redes sociais' : subtitle)+']'
 
 !!! Strict
-%html{:lang => "pt", :xmlns => "http://www.w3.org/1999/xhtml"}
+%html{:lang => 'pt', :xmlns => 'http://www.w3.org/1999/xhtml'}
 
   %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %meta{'http-equiv' => 'content-type', :content => 'text/html; charset=utf-8'}
     %title=title
-    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
+    %meta{:name => :viewport, :content => 'width=device-width, initial-scale=1'}
     =stylesheet_link_tag :ie, :screen, :main
     =stylesheet_link_tag :print, :media => :print
     =stylesheet_link_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.css'
     =yield_content :other_css
     =javascript_include_tag '/javascripts/jquery'
     =yield_content :important_js
+    %meta{:name => :author, :content => 'Igor Santos (igorsantos07)'}
+    %meta{:name => :copyright, :content => "© 2012-#{Time.new.year} Igor Santos (igorsantos07)"}
+    %meta{:name => :robots, :content => :follow}
+    %meta{:name => 'content-language', :content => 'pt-br'}
 
   %body
     #header-container
