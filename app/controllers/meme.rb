@@ -18,20 +18,24 @@ Memelinks.controllers :meme do
 
     if meme
       # should redirect to meme:show if the request is not coming from us and there's no ?embed
-#      if (request.referrer.nil? or !request.referrer.include?(request.host)) and !params.has_key?('embed')
-#        redirect url(:meme, :show, :slug => meme.slug)
-#      end
+      if (request.referrer.nil? or !request.referrer.include?(request.host)) and !params.has_key?('embed')
+        redirect url(:meme, :show, :slug => meme.slug)
+      else
 
-      if params.has_key?('y') or params.has_key?('embed') or request.referer.nil? or (
-        !from_admin and #if it doesn't come from admin pages
-        !(request.referrer =~ Regexp.new(request.host+"\/?")) and #or from the homepage
-        !request.referrer.include? request.host + url(:meme,:all) #or from :all action
-      )
-        meme.inc(:all_views_count, 1)
-        meme.inc(:external_count, 1) if !request.referer.nil? and !request.referrer.include? request.host
+      ############################################ STATISTICAL COUNTER ############################################
+        if params.has_key?('y') or params.has_key?('embed') or request.referer.nil? or (
+          !from_admin and #if it doesn't come from admin pages
+          !(request.referrer =~ Regexp.new(request.host+"\/?")) and #or from the homepage
+          !request.referrer.include? request.host + url(:meme,:all)) #or from :all action
+            meme.inc(:all_views_count, 1)
+            meme.inc(:external_count, 1) if !request.referer.nil? and !request.referrer.include? request.host
+        end
+      ############################################ STATISTICAL COUNTER ############################################
+
+        headers 'cache-control' => 'no-cache', 'pragma' => 'no-cache' unless params.has_key?('embed')
+        content_type meme.image_mime
+        body meme.image
       end
-      content_type meme.image_mime
-      body meme.image
     else
       logger.error params.inspect
       halt 404, 'Meme not found :('
