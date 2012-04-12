@@ -2,6 +2,8 @@
 -content_for :subtitle do
   Sugira um meme!
 
+-partial 'layouts/fb_meta', :locals => {:title => 'Sugira um meme para o MemeLinks!'}
+
 -form_for :meme, url(:meme, :suggest), :id => :suggest, :enctype => "multipart/form-data" do |f|
   .group
     =f.label :name, :caption => 'Nome'
