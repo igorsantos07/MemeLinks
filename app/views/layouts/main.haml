@@ -19,6 +19,7 @@
     %meta{:name => :copyright, :content => "© 2012-#{Time.new.year} Igor Santos (igorsantos07)"}
     %meta{:name => :robots, :content => :follow}
     %meta{:name => 'content-language', :content => 'pt-br'}
+    =yield_content :other_meta
 
   %body
     #header-container
