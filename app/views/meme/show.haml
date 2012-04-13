@@ -11,8 +11,8 @@
     %h3=@meme.name
   .main-box
     =image_tag img_url+'?y'
-    .share
-      %div{:class => 'fb-like', :data => {:href => request.url, :send => :true, :layout => :box_count, :width => 100, 'show-faces' => :true, :font => :arial}}
+    .social
+      .fb-like{:data => {:href => request.url, :send => :true, :layout => :box_count, :width => 100, 'show-faces' => :true, :font => :arial}}
 
   -if @meme.keywords.length > 0
     #keywords
