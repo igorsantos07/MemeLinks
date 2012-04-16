@@ -4,12 +4,14 @@
     { :type => :website,
       :site_name => 'MemeLinks.com',
       :url => request.url,
-      :admins => 1081773001,
+      :admins => admins ||= 1081773001,
       :image => image ||= "http://#{request.host}/logo-128.gif",
       :title => title ||= 'MemeLinks.com',
     }.each do |prop,content|
-      property = (prop == :admins)? 'fb:'+prop.to_s : 'og:'+prop.to_s
-      metas += "<meta property=\"#{property}\" content=\"#{content}\" />\n"
+      unless content.empty?
+        property = (prop == :admins)? 'fb:'+prop.to_s : 'og:'+prop.to_s
+        metas += "<meta property=\"#{property}\" content=\"#{content}\" />\n"
+      end
     end
     metas
   end
