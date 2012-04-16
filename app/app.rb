@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Memelinks < Padrino::Application
-  register SassInitializer
+  register SassApp
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
