@@ -1,4 +1,5 @@
 -# -*- encoding : utf-8 -*-
+-pages = paginate(:memes, :index, @total_memes, :current_page => @current_page, :per_page => @page_size, :template => :classic)
 .block
   .secondary-navigation
     %ul.wat-cf
@@ -9,6 +10,7 @@
       =pat(:all)
       =mt(:memes)
     .inner
+      =pages
       %table.table
         %tr
           %th=mat(:meme, :name)
@@ -36,6 +38,7 @@
               =button_to pat(:edit), url(:memes, :edit, :id => meme.id), :method => :get, :class => :button_to
               ="|"
               =button_to pat(:delete), url(:memes, :destroy, :id => meme.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      =pages
       .actions-bar.wat-cf
         .actions="&nbsp;"
 

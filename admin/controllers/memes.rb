@@ -2,8 +2,18 @@
 Admin.controllers :memes do |admin|
 
   get :index do
-    @memes = Meme.desc :created_at
+    begin # paging config
+      @total_memes = Meme.count
+      @current_page = (params[:page] || 1).to_i
+      @page_size = 15
+    end
+
+    @memes = Meme
+      .desc(:created_at)
+      .skip(@page_size * (@current_page - 1))
+      .limit(@page_size)
     @top_memes = Meme.limit(20).tops
+
     render 'memes/index', :layout => :two_column
   end
 
