@@ -8,7 +8,7 @@
       :image => image ||= "http://#{request.host}/logo-128.gif",
       :title => title ||= 'MemeLinks.com',
     }.each do |prop,content|
-      unless content.empty?
+      unless content.class == String && content.empty?
         property = (prop == :admins)? 'fb:'+prop.to_s : 'og:'+prop.to_s
         metas += "<meta property=\"#{property}\" content=\"#{content}\" />\n"
       end
