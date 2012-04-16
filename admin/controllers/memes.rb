@@ -2,7 +2,7 @@
 Admin.controllers :memes do |admin|
 
   get :index do
-    @memes = Meme.asc :name_lower
+    @memes = Meme.desc :created_at
     @top_memes = Meme.limit(20).tops
     render 'memes/index', :layout => :two_column
   end
