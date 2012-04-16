@@ -1,7 +1,7 @@
 :ruby
   content_for :other_meta do
     metas = ''
-    { :type => :website,
+    { :type => type ||= :article,
       :site_name => 'MemeLinks.com',
       :url => request.url,
       :admins => admins ||= 1081773001,
