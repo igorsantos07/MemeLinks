@@ -4,7 +4,7 @@ Admin.helpers do
     opts = {
       :current_page => 1,
       :per_page     => 20,
-      :template     => 'punbb' # 'extended', 'classic', 'brutal', 'digg'
+      :template     => :classic # punbb | extended | classic | brutal | digg
     }.merge!(opts)
 
     opts[:controller] = controller

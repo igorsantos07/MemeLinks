@@ -1,10 +1,36 @@
 # -*- encoding : utf-8 -*-
 class Admin < Padrino::Application
+  register SassAdmin
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
   register Padrino::Admin::AccessControl
 
+######################## VARIOUS SETTINGS ########################
+  enable  :sessions
+  disable :store_location
+  layout  :one_column
+  set :login_page, "/admin/sessions/new"
+  set :haml, :format => :html5
+
+######################## SASS ROUTE ########################
+  get :sass, :map => '/stylesheets/:file.css' do
+    content_type 'text/css', :charset => 'utf-8'
+    sass params[:file]
+  end
+
+######################## ACCESS CONTROL ########################
+  access_control.roles_for :any do |role|
+    role.protect "/"
+    role.allow "/sessions"
+  end
+
+  access_control.roles_for :admin do |role|
+    role.project_module :memes, "/memes"
+    role.project_module :accounts, "/accounts"
+  end
+
+######################## DEFAULT SHIT ########################
   ##
   # Application configuration options
   #
@@ -18,21 +44,7 @@ class Admin < Padrino::Application
   # set :locale_path, "bar"        # Set path for I18n translations (default your_app/locales)
   # disable :sessions              # Disabled sessions by default (enable if needed)
   # disable :flash                 # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
-  layout  :one_column             # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
+  # layout :my_layout              # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   #
 
-  set :login_page, "/admin/sessions/new"
-
-  enable  :sessions
-  disable :store_location
-
-  access_control.roles_for :any do |role|
-    role.protect "/"
-    role.allow "/sessions"
-  end
-
-  access_control.roles_for :admin do |role|
-    role.project_module :memes, "/memes"
-    role.project_module :accounts, "/accounts"
-  end
 end
