@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Admin < Padrino::Application
-  register SassAdmin
+  register SassInitializer
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
