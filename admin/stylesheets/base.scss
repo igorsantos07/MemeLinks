@@ -6,19 +6,43 @@
 * html .wat-cf{height:1%;}
 .wat-cf{display:block;}
 /* End hide from IE-mac */
-h1{margin:15px 0;font-size:22px;font-weight:normal;}
+h1 {
+  margin:15px 0;
+  font-size:22px;
+  font-weight:normal;
+  strong {
+    font-variant: small-caps;
+    font-size: 1.1em;
+  }
+}
 h2{font-size:22px;margin:15px 0;font-weight:normal;}
 h3{font-size:18px;margin:10px 0;font-weight:normal;}
 h4{font-size:16px;margin:10px 0;font-weight:normal;}
+
 hr{height:1px;border:0;}
 p{margin:15px 0;}
 a img{border:none;}
 body{font-size:12px;font-family:sans-serif;}
 #container{min-width:960px;}
 #header,#wrapper{padding:0 20px;}
-#header{position:relative;padding-top:1px;}
-#header h1{margin:0;padding:10px 0;font-size:26px;}
-#header h1 a:link,#header h1 a:active,#header h1 a:hover,#header h1 a:visited{text-decoration:none;}
+
+#header {
+  position:relative;
+  padding-top:1px;
+
+  h1{
+    margin:0;
+    padding:10px 0;
+
+    a:link,
+    a:active,
+    a:hover,
+    a:visited {
+      text-decoration:none;
+    }
+  }
+}
+
 #main{width:73%;float:left;}
 #main.no-sidebar{width:100%;float:left;}
 .actions-bar{padding:10px 1px;}
