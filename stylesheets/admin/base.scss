@@ -1,3 +1,5 @@
+@import 'shared.sass';
+
 *{margin:0;padding:0}
 .clear{clear:both;height:0;}
 .wat-cf:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
@@ -11,7 +13,8 @@ h1 {
   font-size:22px;
   font-weight:normal;
   strong {
-    font-variant: small-caps;
+    font-weight:normal;
+    font-family: 'Lilita One', 'Arial Black', 'Arial', sans-serif;
     font-size: 1.1em;
   }
 }

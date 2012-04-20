@@ -17,11 +17,7 @@ $gray: #666
 $grey: #666
 $blacky: #444
 
-@font-face
-  font-family: 'Lilita One'
-  font-style: normal
-  font-weight: 400
-  src: local('Lilita One'), local('LilitaOne'), url('LilitaOne.woff') format('woff')
+@import 'shared.sass'
 
 h1, h2, h3, h4, h5, h6
   font-family: 'Lilita One', 'Arial Black', 'Arial', sans-serif
@@ -53,6 +49,7 @@ body
     h1
       position: absolute
       left: 20px
+      width: 275px
       text-align: right
       font-size: 4.5em
       span
