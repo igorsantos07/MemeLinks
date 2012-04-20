@@ -1,0 +1,14 @@
+-# ti = title color
+-# tx = text color
+-# bg = background color
+-# bd = border color
+-# ur = URL color
+:javascript
+  var ti='3C7B79',tx='000000',bg='E1F1F0',bd='E1F1F0',ur='008000'
+  try{var AdBrite_Iframe=window.top!=window.self?2:1;var AdBrite_Referrer=document.referrer==''?document.location:document.referrer;AdBrite_Referrer=encodeURIComponent(AdBrite_Referrer);}catch(e){var AdBrite_Iframe='',AdBrite_Referrer=''}
+
+%span{:style => 'white-space:nowrap'}
+  :javascript
+    document.write(String.fromCharCode(60,83,67,82,73,80,84));document.write(' src="http://ads.adbrite.com/mb/text_group.php?sid=2138062&zs=3732385f3930&ifr='+AdBrite_Iframe+'&ref='+AdBrite_Referrer+'" type="text/javascript">');document.write(String.fromCharCode(60,47,83,67,82,73,80,84,62))
+  %a(target="_top" href="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=2138062&afsid=1")
+    %img(src="http://files.adbrite.com/mb/images/adbrite-your-ad-here-leaderboard.gif" style="background-color:#E1F1F0;border:none;padding:0;margin:0;" alt="Your Ad Here" width="14" height="90" border="0")
