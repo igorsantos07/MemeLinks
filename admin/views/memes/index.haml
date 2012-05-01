@@ -39,7 +39,7 @@
           %tr
             %td
               -unless meme.ip_user_creator.nil?
-                =image_tag '/images/icons/light-bulb.png', :title => meme.ip_user_creator
+                %img.tooltip{:src =>'/images/icons/light-bulb.png', :title => meme.ip_user_creator}
             %td=link_to meme.name, '/'+meme.filename
             %td=meme.slug
             %td=meme.all_views_count.to_s+' / '+meme.external_count.to_s

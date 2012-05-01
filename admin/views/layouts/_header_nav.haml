@@ -4,7 +4,7 @@
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
     %title MemeLinks Admin
-    =stylesheet_link_tag '/stylesheets/admin/base', '/stylesheets/admin/themes/warehouse-bec/style'
+    =stylesheet_link_tag '/stylesheets/jquery.tooltip', '/stylesheets/admin/base', '/stylesheets/admin/themes/warehouse-bec/style'
     =yield_content :other_css
   %body
     #container
@@ -23,5 +23,5 @@
         .flash=[:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join
         =yield_content :content
 
-    =javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs'
+    =javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs', '/javascripts/jquery.tooltip', '/admin/javascripts/admin'
     =yield_content :other_js
