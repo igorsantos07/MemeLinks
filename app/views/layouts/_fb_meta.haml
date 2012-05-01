@@ -5,7 +5,7 @@
       :site_name => 'MemeLinks.com',
       :url => request.url,
       :admins => admins ||= 1081773001,
-      :image => image ||= "http://#{request.host}/logo-128.gif",
+      :image => image ||= "http://#{request.host}/logo-256.gif",
       :title => title ||= 'MemeLinks.com',
     }.each do |prop,content|
       unless content.class == String && content.empty?
