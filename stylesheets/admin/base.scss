@@ -82,7 +82,7 @@ body{font-size:12px;font-family:sans-serif;}
 .pagination a{text-decoration:none;}
 /* tables */
 .table{width:100%;border-collapse:collapse;margin-bottom:15px;}
-.table th{padding:10px;font-weight:bold;text-align:left;}
+.table th{padding:10px;font-weight:bold;text-align:left;white-space:nowrap}
 /*.table th.first{width:30px;}*/
 .table th.last{width:80px;}
 .table .checkbox{margin-left:10px;}
