@@ -1,16 +1,24 @@
 :ruby
   content_for :other_meta do
     metas = ''
-    { :type => type ||= :article,
+    properties = {
+      :type => type ||= :article,
       :site_name => 'MemeLinks.com',
       :url => request.url,
       :admins => admins ||= 1081773001,
       :image => image ||= "http://#{request.host}/logo-256.gif",
       :title => title ||= 'MemeLinks.com',
-    }.each do |prop,content|
-      unless content.class == String && content.empty?
-        property = (prop == :admins)? 'fb:'+prop.to_s : 'og:'+prop.to_s
-        metas += "<meta property=\"#{property}\" content=\"#{content}\" />\n"
+      :tags => tags ||= [],
+    }
+
+    properties.each do |prop,content|
+      unless content.class == String and content.empty?
+        if prop == :tags
+          content.each {|tag| metas += "<meta property=\"og:#{properties[:type]}:tag\" content=\"#{tag}\" />\n" }
+        else
+          property = (prop == :admins)? 'fb:'+prop.to_s : 'og:'+prop.to_s
+          metas += "<meta property=\"#{property}\" content=\"#{content}\" />\n"
+        end
       end
     end
     metas
