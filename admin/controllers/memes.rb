@@ -1,6 +1,11 @@
 # -*- encoding : utf-8 -*-
 Admin.controllers :memes do |admin|
 
+  before do
+    @pending_conditions = {:status => Meme::Status[:pending]}
+    @total_pending = Meme.where(@pending_conditions).count
+  end
+
   before :index, :pending do
     begin # paging config
       @current_page = (params[:page] || 1).to_i
@@ -20,10 +25,9 @@ Admin.controllers :memes do |admin|
   end
 
   get :pending do
-    conditions = {:status => Meme::Status[:pending]}
-    @total_memes = Meme.where(conditions).count # paging
+    @total_memes = @total_pending # paging
     @memes = Meme
-      .where(conditions)
+      .where(@pending_conditions)
       .desc(:created_at)
       .skip(@page_size * (@current_page - 1))
       .limit(@page_size)

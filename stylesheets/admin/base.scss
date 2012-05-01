@@ -138,3 +138,19 @@ a#img img {
   margin: 5px 0px;
   float: right;
 }
+
+.secondary-navigation {
+  li {
+    .counter {
+      color: #FCD209;
+      font-size: 15px;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+  }
+  li.active {
+    .counter {
+      color: crimson;
+    }
+  }
+}

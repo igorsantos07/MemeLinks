@@ -13,7 +13,7 @@
   .secondary-navigation
     %ul.wat-cf
       %li.first=link_to pat(:list), url(:memes, :index)
-      %li=link_to pat(:pending), url(:memes, :pending)
+      =partial 'memes/pending_tab', :locals => {:active => active[:pending]}
       %li=link_to pat(:new), url(:memes, :new)
       %li.active=link_to pat(:edit), url(:memes, :edit, :id => @meme.id)
   .content
