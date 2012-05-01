@@ -28,7 +28,7 @@
           %th=mat(:meme, :name)
           %th=mat(:meme, :slug)
           %th Views (tot/ext)
-          %th=mat(:meme, :keywords)
+          %th=mat(:meme, :tags)
           %th=mat(:meme, :status)
           -#%th=mat(:meme, :created_at)
           -#%th=mat(:meme, :updated_at)
@@ -36,6 +36,7 @@
           -#%th=mat(:meme, :updater_id)
           %th.last="&nbsp;"
         -@memes.each do |meme|
+          -kw_class = (meme.keywords.length == 0)? :alert : ''
           %tr
             %td
               -unless meme.ip_user_creator.nil?
@@ -43,7 +44,7 @@
             %td=link_to meme.name, '/'+meme.filename
             %td=meme.slug
             %td=meme.all_views_count.to_s+' / '+meme.external_count.to_s
-            %td=meme.keywords_string
+            %td.tooltip{:class => kw_class, :title => meme.keywords_string}=meme.keywords.length
             %td=meme.status_str
             -#%td=meme.created_at.strftime '%d/%m/%Y %H:%M:%S'
             -#%td=meme.updated_at.strftime '%d/%m/%Y %H:%M:%S'
