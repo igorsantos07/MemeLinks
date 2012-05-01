@@ -3,6 +3,7 @@
   .secondary-navigation
     %ul.wat-cf
       %li.first=link_to pat(:list), url(:memes, :index)
+      %li=link_to pat(:pending), url(:memes, :pending)
       %li.active=link_to pat(:new), url(:memes, :new)
   .content
     %h2.title

@@ -1,10 +1,21 @@
 -# -*- encoding : utf-8 -*-
--pages = paginate(:memes, :index, @total_memes, :current_page => @current_page, :per_page => @page_size, :template => :extended)
+:ruby
+  active, this_action = {}, ''
+  [:index, :new, :pending].each do |action|
+    if request.path == url(:memes, action)
+      this_action = action
+      active[action] = :active
+    else
+      active[action] = ''
+    end
+  end
+-pages = paginate(:memes, this_action, @total_memes, :current_page => @current_page, :per_page => @page_size, :template => :extended)
 .block
   .secondary-navigation
     %ul.wat-cf
-      %li.first.active=link_to pat(:list), url(:memes, :index)
-      %li=link_to pat(:new), url(:memes, :new)
+      %li.first{:class => active[:index]}=link_to pat(:list), url(:memes, :index)
+      %li{:class => active[:pending]}=link_to pat(:pending), url(:memes, :pending)
+      %li{:class => active[:new]}=link_to pat(:new), url(:memes, :new)
   .content
     %h2.title
       =pat(:all)

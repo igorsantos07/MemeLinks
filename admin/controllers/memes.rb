@@ -1,13 +1,15 @@
 # -*- encoding : utf-8 -*-
 Admin.controllers :memes do |admin|
 
-  get :index do
+  before :index, :pending do
     begin # paging config
-      @total_memes = Meme.count
       @current_page = (params[:page] || 1).to_i
       @page_size = 15
     end
+  end
 
+  get :index do
+    @total_memes = Meme.count # paging
     @memes = Meme
       .desc(:created_at)
       .skip(@page_size * (@current_page - 1))
@@ -15,6 +17,18 @@ Admin.controllers :memes do |admin|
     @top_memes = Meme.limit(20).tops
 
     render 'memes/index', :layout => :two_column
+  end
+
+  get :pending do
+    conditions = {:status => Meme::Status[:pending]}
+    @total_memes = Meme.where(conditions).count # paging
+    @memes = Meme
+      .where(conditions)
+      .desc(:created_at)
+      .skip(@page_size * (@current_page - 1))
+      .limit(@page_size)
+
+    render 'memes/index'
   end
 
   get :new do
