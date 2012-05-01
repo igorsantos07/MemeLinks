@@ -4,7 +4,7 @@
 -content_for :subtitle do
   ='Meme Card - '+@meme.name
 
--partial 'layouts/fb_meta', :locals => {:image => 'http://'+request.host+img_url, :title => @meme.name+' [MemeLinks]'}
+-partial 'layouts/fb_meta', :locals => {:image => uri(img_url), :title => @meme.name+' [MemeLinks]'}
 
 .ad-leaderboard
   =partial 'layouts/ads/adsense', :locals => {:slot => '9185861792', :height => 90}

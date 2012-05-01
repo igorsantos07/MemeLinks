@@ -12,7 +12,7 @@ Memelinks.controllers :meme do
   end
 
   get :image, :map => '/:filename', :priority => :low do
-    from_admin = !request.referrer.nil? and request.referrer.include? request.host + '/admin/'
+    from_admin = !request.referrer.nil? and request.referrer.include? uri('/admin/')
     filename = params[:filename].is_a?(Array)? params[:filename][0] : params[:filename]
     meme = (from_admin)? Meme.find_by_filename(filename) : Meme.active.find_by_filename(filename)
 
@@ -26,8 +26,8 @@ Memelinks.controllers :meme do
       ############################################ STATISTICAL COUNTER ############################################
         if params.has_key?('y') or params.has_key?('embed') or request.referer.nil? or (
           !from_admin and #if it doesn't come from admin pages
-          !(request.referrer =~ Regexp.new(request.host+"\/?")) and #or from the homepage
-          !request.referrer.include? request.host + url(:meme,:all)) #or from :all action
+          !(request.referrer =~ Regexp.new(uri("\/?"))) and #or from the homepage
+          !request.referrer.include? uri(url(:meme,:all))) #or from :all action
             meme.inc(:all_views_count, 1)
             meme.inc(:external_count, 1) if !request.referer.nil? and !request.referrer.include? request.host
         end

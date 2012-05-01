@@ -5,6 +5,6 @@
   Tem meme novo sendo sugerido. Vai lá no Admin dar uma olhada!
   %br
   %strong Meme:
-  %a{:href => url+Admin.url(:memes, :edit, :id => meme.id)}='"'+meme.name+'"'
+  =link_to '"'+meme.name+'"', url+Admin.url(:memes, :edit, :id => meme.id)
 
 %p Att,<br />MemeBot
