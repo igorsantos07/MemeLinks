@@ -122,11 +122,15 @@ ul.list li .item .avatar{float:left;margin:0 5px 5px 0;width:30px;height:30px;}
 /* custom */
 .code{font-family: Courier, 'Courier New', monospace;color:#36393D;}
 
-a#img img {
-  width: 200px;
-  max-height: 300px;
-  border: 1px solid black;
+a#img {
+  display: block;
+  width: 400px;
   margin: 0px auto;
+  img {
+  width: inherit;
+    max-height: 300px;
+    border: 1px solid black;
+  }
 }
 
 #sidebar .content {

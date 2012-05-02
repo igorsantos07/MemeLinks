@@ -31,6 +31,7 @@
     %h3 Quick actions
     .content
       %ul.navigation
+        %li=link_to 'Go to Meme Card', Memelinks.url(:meme, :show, :slug => @meme.slug)
         %li=link_to 'Delete this', url(:memes, :destroy, :id => @meme.id), :method => :delete, :confirm => pat(:confirm)
         -if @meme.status != Meme::Status[:active]
           %li=link_to 'Approve it'
