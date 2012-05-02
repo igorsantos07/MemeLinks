@@ -1,5 +1,5 @@
 -if @total_pending > 0
-  %li{:class => active}
+  %li{:class => active ||= ''}
     %a{:href => url(:memes, :pending)}
       =pat(:pending)
       %span.counter [#{@total_pending}]
