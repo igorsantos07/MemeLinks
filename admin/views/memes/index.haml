@@ -41,7 +41,7 @@
             %td
               -unless meme.ip_user_creator.nil?
                 %img.tooltip{:src =>'/images/icons/light-bulb.png', :title => meme.ip_user_creator}
-            %td=link_to meme.name, '/'+meme.filename
+            %td=link_to meme.name, Memelinks.url(:meme, :show, :slug => meme.slug)
             %td=meme.slug
             %td=meme.all_views_count.to_s+' / '+meme.external_count.to_s
             %td.tooltip{:class => kw_class, :title => meme.keywords_string}=meme.keywords.length
