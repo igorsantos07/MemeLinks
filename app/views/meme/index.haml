@@ -21,7 +21,7 @@
     .meme
       .heading
         %h3=link_to meme.name, show_url
-        %a.link{ :href => img_url, 'data-short-href' => uri(img_url)[/\/\/(.*)/,1] }=uri(img_url)
+        %a.link{ :href => img_url, 'data-short-href' => uri(show_url)[/\/\/(.*)/,1] }=uri(show_url)
       %a.meme{ :href => img_url+'?y', :title => meme.name }=image_tag img_url
 
 .ad-footer
