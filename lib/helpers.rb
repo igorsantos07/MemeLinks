@@ -10,15 +10,15 @@ Mail::Message.class_eval do
 end
 
 def production_config dev_file, prod_config
-  case PADRINO_ENV
-    when 'production' then prod_config
+  if PADRINO_ENV == 'production'
+      prod_config
+  else
+    config_file = "#{PADRINO_ROOT}/config/#{dev_file}.yml"
+    if File.exists? config_file
+      YAML.load_file(config_file).symbolize_keys.freeze
     else
-      mail_config = "#{PADRINO_ROOT}/config/#{dev_file}.yml"
-      if File.exists? mail_config
-        YAML.load_file(mail_config).symbolize_keys.freeze
-      else
-        logger.error "/config/#{dev_file}.yml is required at this environment"
-        nil
-      end
+      logger.error "/config/#{dev_file}.yml is required at this environment"
+      nil
+    end
   end
 end

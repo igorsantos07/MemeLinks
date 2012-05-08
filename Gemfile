@@ -17,6 +17,9 @@ gem 'mongoid_slug'
 
 # Random requirements
 gem 'awesome_print'
+gem 'json'
+gem 'getclicky'
+  gem 'httparty'
 gem 'term-ansicolor'
 gem 'rack-recaptcha', :require => 'rack/recaptcha'
 

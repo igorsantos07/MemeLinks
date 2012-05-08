@@ -30,6 +30,18 @@ class Admin < Padrino::Application
     role.project_module :accounts, "/accounts"
   end
 
+######################## GETCLICKY ########################
+  getclicky_config = production_config :getclicky, {
+    :sitekey  => ENV['GETCLICKY_SITEKEY'],
+    :admin_sitekey  => ENV['GETCLICKY_ADMIN_SITEKEY']
+  }
+  Getclicky.configure do |config|
+    config.site_id = 66546313
+    config.sitekey = getclicky_config[:sitekey]
+    config.admin_sitekey = getclicky_config[:admin_sitekey]
+  end
+
+
 ######################## DEFAULT SHIT ########################
   ##
   # Application configuration options

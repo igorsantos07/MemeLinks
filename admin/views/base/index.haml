@@ -6,13 +6,6 @@
   .content
     %h2.title Last statistics
     .inner
-      -days = ['29/04','30/04','01/05']
-      -visits = {:total => [207,254,42], :uniq => [202,253,40], :new => [193,243,38], :actions => [327,371,63]}
-      -visits_graph, i = [], 0
-      -visits.each do |name, values|
-        -visits_graph[i], v = [], 0
-        -values.each {|n| visits_graph[i] << [v, n]; v+=1 }
-        -i+=1
       #visits.stats-block
         %h3 Visits/day
         %table
@@ -24,25 +17,27 @@
               %th New
               %th Actions
           %tbody
-            -visits[:total].length.times do |d|
-              -d -=1
+            -columns = [:visitors, :visitors_unique, :visitors_new, :actions]
+            -visits_graph, d = [], 0
+            -@visits.each do |date, numbers|
               %tr
-                %th=days[d]
-                %td=visits[:total][d]
-                %td=visits[:uniq][d]
-                %td=visits[:new][d]
-                %td=visits[:actions][d]
+                %th=date
+                -c = 0
+                -columns.each do |column|
+                  -visits_graph[c] = [] if visits_graph[c].nil?
+                  -visits_graph[c] << [ d, numbers[column] ]
+                  %td=numbers[column]
+                  -c+=1
+                -d+=1
         #graph-1.graph
 
-      -countries = {'Brasil' => 120, 'Canada' => 10, 'Portugal' => 10, 'UK' => 6, 'Germany' => 5}
       .stats-block
         %h3 Most active countries
-        -countries_graph, countries_label, i = [], [], 0
-        -countries.each do |country,visits|
-          -#i+=1
+        -countries_graph, countries_label, i = [], [], @countries.length+1
+        -@countries.each do |country,visits|
+          -i-=1
           -countries_label << country
-          -countries_graph << visits
-        -countries_graph.reverse!
+          -countries_graph << [visits,i]
         -countries_label.reverse!
         #graph-2.graph
 
@@ -64,17 +59,16 @@
         pointLabels: { show: true, location: 'n', edgeTolerance: -15 },
         shadowAngle: 135,
         rendererOptions: {
-          //barDirection: 'horizontal',
+          barDirection: 'horizontal',
           varyBarColor: true
         }
       },
       series: countries_label,
       axes: {
-          xaxis: {
+          yaxis: {
               renderer: $.jqplot.CategoryAxisRenderer,
               ticks: countries_label,
-              tickRenderer: $.jqplot.​CanvasAxisTickRenderer,
-              tickOptions: {angle: -30}
+              tickRenderer: $.jqplot.​CanvasAxisTickRenderer
           },
       }
     })

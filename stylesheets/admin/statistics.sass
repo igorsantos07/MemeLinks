@@ -1,0 +1,39 @@
+@import '../grid.scss'
+$columns: 6
+$column-width: 140
+$gutter-width: 10
+$total-width: 100% // Remove this for a pixel-based layout
+
+$dark: #006666
+$light: #E6FAFA
+
+.stats-block
+  @include column(3)
+  background-color: #f0f0f0
+  border-radius: 10px
+  padding: 0px 5px 5px 5px
+  h3
+    background-color: $light
+    margin: 0px -5px
+    padding: 5px 10px
+    border-radius: 10px 10px 0px 0px
+    &:before
+      content: "» "
+  table
+    background-color: white
+    margin: 5px auto
+    border-collapse: collapse
+    td, th
+      border: 1px solid $dark
+      padding: 2px 5px
+    th
+      background-color: $dark
+      color: white
+    tbody
+      text-align: right
+  .graph
+    margin-top: 5px
+    min-height: 200px
+    min-width: 200px
+  #graph-2
+    height: 550px
